@@ -17,9 +17,6 @@ import {
   Users,
   CheckCircle,
   Star,
-  File,
-  Settings2,
-  Search,
 } from "lucide-react";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Navigation } from "@/components/navigation";
