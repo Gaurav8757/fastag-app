@@ -1,3 +1,4 @@
+import { TextAnimate } from "../magicui/text-animate";
 import {
   Table,
   TableBody,
@@ -8,9 +9,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ShootingStars } from "../ui/shooting-stars";
-import { TextAnimate } from "../magicui/text-animate";
 
-export default function Pricing() {
+
+export default function PriceClient() {
   return (
     <section className="py-8">
       <ShootingStars
@@ -22,32 +23,34 @@ export default function Pricing() {
         minDelay={200}
         maxDelay={300}
       />
+      
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <TextAnimate
-            animation="fadeIn"
-            by="line"
-            as="p"
-            className="text-3xl lg:text-4xl font-bold text-primary"
-          >
-            Our Pricing Plans
-          </TextAnimate>
-          <TextAnimate
-            animation="slideLeft"
-            by="character"
-            className="text-xl text-muted-foreground text-pretty max-w-7xl mx-auto"
-          >
-            Comprehensive FASTag Plans
-          </TextAnimate>
-          <TextAnimate
-            animation="slideLeft"
-            by="character"
-            className="text-xl text-muted-foreground text-pretty max-w-7xl mx-auto"
-          >
-            One-time Tag Joining Fee of ₹100 (inclusive of all applicable
+       
+          <div className="text-center space-y-4 mb-16">
+            <TextAnimate
+              animation="fadeIn"
+              by="line"
+              as="p"
+              className="text-3xl lg:text-4xl font-bold text-primary text-center"
+            >
+             Our Pricing Plans
+            </TextAnimate>
+            <TextAnimate
+              animation="slideLeft"
+              by="character"
+              className="text-xl text-muted-foreground text-pretty"
+            >
+               Comprehensive FASTag Plans
+            </TextAnimate>
+            <TextAnimate
+              animation="slideLeft"
+              by="character"
+              className="text-xl text-muted-foreground text-pretty"
+            >
+                One-time Tag Joining Fee of ₹100 (inclusive of all applicable
             taxes), tailored to suit all your travel needs.
-          </TextAnimate>
-        </div>
+            </TextAnimate>
+          </div>
       </div>
       <div className="container mx-auto px-4">
       <Table>

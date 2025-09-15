@@ -13,7 +13,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Ripple } from "@/components/magicui/ripple";
 
-export function Contact() {
+export function ContactClient() {
   return (
     <div className="relative">
       <Ripple
@@ -47,12 +47,13 @@ export function Contact() {
               <div className="grid lg:grid-cols-2 space-y-8 lg:space-y-0 gap-8 mb-8 lg:mb-0">
                 <div>
                   <TextAnimate
-                    animation="slideRight"
+                    animation="slideLeft"
                     by="character"
                     className="text-2xl font-bold mb-6 text-primary"
                   >
                     Get Support
                   </TextAnimate>
+
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">

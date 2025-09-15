@@ -5,7 +5,9 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { AuthProvider } from "@/contexts/auth-context"
+import { LoaderOne } from "@/components/ui/loader";
 import "./globals.css"
+import ClientLayout from "@/components/clientLayout/ClientLayout"
 
 export const metadata: Metadata = {
   title: "ASL FastPay - FASTag Service Provider",
@@ -22,7 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <AuthProvider>
-          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+          <Suspense fallback={<LoaderOne/>}>
+          <ClientLayout>{children}</ClientLayout>
+          </Suspense>
         </AuthProvider>
         <Analytics />
       </body>

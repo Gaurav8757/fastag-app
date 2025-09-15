@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ShootingStars } from "../ui/shooting-stars";
-export default function Faqs() {
+export default function FaqClient() {
   const [value, setValue] = useState<string>("item-1");
   const accordionData = [
     {

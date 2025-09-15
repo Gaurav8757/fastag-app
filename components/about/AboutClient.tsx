@@ -8,20 +8,19 @@ import {
   CardTitle,
 } from "../ui/card";
 import { TextAnimate } from "../magicui/text-animate";
-import { useStore } from "@/store/store";
 import { ShootingStars } from "../ui/shooting-stars";
 
-export function About() {
-  const {setActiveSection} = useStore();
+export function AboutClient() {
   return (
-    <section className="py-0  text-gray-900 relative overflow-hidden">
+    <section className="py-0 mx-auto bg-slate-100/80 text-gray-900 relative overflow-hidden">
      
-      <div className="absolute top-[-100px] left-[10%] w-[600px] h-[600px] bg-primary/30 rounded-full blur-[120px] z-0"></div>
-      <div className="absolute bottom-[-80px] right-[10%] w-[500px] h-[500px] bg-secondary/25 rounded-full blur-[100px] z-0"></div>
+      <div className="absolute top-[-100px] left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] z-0"></div>
+      <div className="absolute bottom-[-80px] right-[10%] w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[100px] z-0"></div>
 
-      <div className="container-fluid mx-auto px-4 relative z-10 space-y-20 bg-[url('/FasTag.jpg')] bg-transparent bg-fixed bg-cover bg-center bg-no-repeat">
+      {/* <div className="container-fluid mx-auto px-4 relative z-10 space-y-20 bg-[url('/FasTag.jpg')] bg-transparent bg-fixed bg-cover bg-center bg-no-repeat"> */}
+      <div className="container mx-auto px-4  relative z-10 md:space-y-32 space-y-16">
         {/* Overlay for blur and soft tint */}
-        <div className="absolute inset-0 bg-slate-100/80 backdrop-blur-sm z-0 size-full" />
+        <div className="absolute inset-0  backdrop-blur-sm z-0 size-full" />
         {/* Header Section */}
 
         <div className="text-center space-y-4 py-8 " data-aos="fade-up">
@@ -46,7 +45,7 @@ export function About() {
 
         {/* Company Details */}
         <div
-          className="grid lg:grid-cols-2 gap-12 items-center"
+          className="grid lg:grid-cols-2 gap-12 mt-0 items-center"
           data-aos="fade-up"
         >
           <div className="space-y-6">
@@ -77,7 +76,7 @@ export function About() {
 
         {/* Values */}
         <div
-          className=" mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto"
           data-aos="fade-up"
           data-aos-delay="400"
         >
@@ -123,7 +122,7 @@ export function About() {
             <MagicCard
               key={idx}
               gradientColor="#d4fbd4"
-              className="hover:scale-102 transition-all duration-300 backdrop-blur-md aspect-rectangle border-0 border-primary-light rounded p-4 text-center xl:h-30  xl:w-100 md:w-80 w-80 mx-auto"
+              className="hover:scale-102 p-4 transition-all duration-300 backdrop-blur-md aspect-rectangle border-0 border-primary-light rounded text-center "
            
             >
              
@@ -144,7 +143,7 @@ export function About() {
 
         {/* Mission, Vision, Plan */}
         <div
-          className="grid md:grid-cols-3 gap-12"
+          className=" mx-auto grid md:grid-cols-3 gap-8"
           data-aos="fade-up"
           data-aos-delay="200"
         >
@@ -218,7 +217,7 @@ export function About() {
 
         {/* Call To Action */}
         <div
-          className="max-w-3xl mx-auto text-center mt-16"
+          className="max-w-3xl mx-auto text-center my-12"
           data-aos="zoom-in"
           data-aos-delay="800"
         >
@@ -229,7 +228,9 @@ export function About() {
             Ready to partner with ASL WALLETS or want to know more? Reach out
             today and let’s build a better future together.
           </p>
-          <button onClick={()=> setActiveSection("contact")} className="px-8 py-4 bg-secondary text-white font-semibold rounded-full shadow-glow-secondary hover:bg-secondary-light transition">
+          <button 
+          // onClick={()=> setActiveSection("contact")} 
+          className="px-8 py-4 bg-secondary text-white font-semibold rounded-full shadow-glow-secondary hover:bg-secondary-light transition">
             Contact Us
           </button>
         </div>

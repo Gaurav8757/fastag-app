@@ -1,4 +1,5 @@
 "use client";
+import { TextAnimate } from "../magicui/text-animate";
 import { CheckCircle } from "lucide-react";
 import {
   CardContent,
@@ -6,13 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { TextAnimate } from "../magicui/text-animate";
+
 import { MagicCard } from "../magicui/magic-card";
 import { ShootingStars } from "../ui/shooting-stars";
 
-export function Services() {
+export function ServiceClient() {
   return (
-    <section className="py-8">
+    <section className="my-auto py-8">
       <ShootingStars
         className="absolute inset-0 pointer-events-none"
         starColor="#ea871f"
@@ -23,23 +24,24 @@ export function Services() {
         maxDelay={300}
       />
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <TextAnimate
-            animation="fadeIn"
-            by="line"
-            as="p"
-            className="text-3xl lg:text-4xl font-bold text-primary"
-          >
-            Our Services
-          </TextAnimate>
-          <TextAnimate
-            animation="slideLeft"
-            by="character"
-            className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto"
-          >
-            Comprehensive FASTag solutions for all your needs
-          </TextAnimate>
-        </div>
+         <div className="text-center space-y-4 mb-16">
+            <TextAnimate
+              animation="fadeIn"
+              by="line"
+              as="p"
+              className="text-3xl lg:text-4xl font-bold text-primary text-center"
+            >
+             Our Services
+            </TextAnimate>
+            <TextAnimate
+              animation="slideLeft"
+              by="character"
+              className="text-xl text-muted-foreground text-pretty"
+            >
+               Comprehensive FASTag solutions for all your needs
+            </TextAnimate>
+          </div>
+      
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
