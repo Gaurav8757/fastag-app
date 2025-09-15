@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { MagicCard } from "../magicui/magic-card";
 import {
   CardContent,
@@ -18,7 +19,7 @@ export function AboutClient() {
       <div className="absolute bottom-[-80px] right-[10%] w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[100px] z-0"></div>
 
       {/* <div className="container-fluid mx-auto px-4 relative z-10 space-y-20 bg-[url('/FasTag.jpg')] bg-transparent bg-fixed bg-cover bg-center bg-no-repeat"> */}
-      <div className="container mx-auto px-4  relative z-10 md:space-y-32 space-y-16">
+      <div className="container mx-auto px-4  relative z-10 md:space-y-32 space-y-6">
         {/* Overlay for blur and soft tint */}
         <div className="absolute inset-0  backdrop-blur-sm z-0 size-full" />
         {/* Header Section */}
@@ -35,7 +36,7 @@ export function AboutClient() {
           <TextAnimate
             animation="slideLeft"
             by="character"
-            className="text-xl text-gray-600 mx-auto"
+            className=" text-gray-600 mx-auto md:text-xl text-base"
           >
             ASL WALLETS is a leading fintech service aggregator in India,
             offering more than 60+ services. Rapid growth, trusted solutions,
@@ -45,12 +46,12 @@ export function AboutClient() {
 
         {/* Company Details */}
         <div
-          className="grid lg:grid-cols-2 gap-12 mt-0 items-center"
-          data-aos="fade-up"
+          className="grid lg:grid-cols-2 gap-12 mt-0 items-center "
+          data-aos="fade-up "
         >
-          <div className="space-y-6">
+          <div className="space-y-6 ">
             <h3 className="text-3xl font-bold text-secondary">Who We Are</h3>
-            <p className="text-lg leading-relaxed text-gray-700">
+            <p className=" leading-relaxed text-gray-700 md:text-lg text-base">
               ASL WALLETS is a trusted partner for payments and service
               aggregation in India. We offer recharge (prepaid, postpaid), bill
               payments (electricity, gas, landline), insurance, travel bookings,
@@ -224,15 +225,15 @@ export function AboutClient() {
           <h3 className="text-3xl font-bold text-primary mb-6">
             Join Us On Our Mission
           </h3>
-          <p className="text-lg text-gray-700 mb-6">
+          <p className="md:text-lg text-base text-gray-700 mb-6">
             Ready to partner with ASL WALLETS or want to know more? Reach out
             today and let’s build a better future together.
           </p>
-          <button 
-          // onClick={()=> setActiveSection("contact")} 
+          <Link href="/contact" 
+          
           className="px-8 py-4 bg-secondary text-white font-semibold rounded-full shadow-glow-secondary hover:bg-secondary-light transition">
             Contact Us
-          </button>
+          </Link>
         </div>
       </div>
     </section>

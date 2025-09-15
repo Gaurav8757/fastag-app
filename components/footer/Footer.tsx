@@ -17,7 +17,7 @@ export default function Footer() {
           </Link>
           <ul className="flex flex-wrap items-center text-sm font-medium text-gray-300 0 sm:mb-0 dark:text-gray-400">
             <li className="hover:text-slate-100 hover:scale-102 transition-all duration-300">
-              <Link href="#" className="me-4 md:me-6">
+              <Link href="/privacy" className="me-4 md:me-6">
                 Privacy Policy
               </Link>
             </li>

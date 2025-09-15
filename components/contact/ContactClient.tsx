@@ -170,7 +170,7 @@ export function ContactClient() {
                         <Input
                           type="text"
                           className="w-full mt-1 px-3 border border-input rounded-md bg-background focus:outline-none focus:ring-0 focus:ring-primary focus:border-transparent"
-                          placeholder="John"
+                          placeholder="Your First Name"
                         />
                       </div>
                       <div>
@@ -178,7 +178,7 @@ export function ContactClient() {
                         <Input
                           type="text"
                           className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background"
-                          placeholder="Doe"
+                          placeholder="Your Last Name"
                         />
                       </div>
                     </div>
@@ -187,7 +187,7 @@ export function ContactClient() {
                       <Input
                         type="email"
                         className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background"
-                        placeholder="john@example.com"
+                        placeholder="fastag@asl.com"
                       />
                     </div>
                     <div>
@@ -206,7 +206,7 @@ export function ContactClient() {
                         placeholder="Tell us more about your inquiry..."
                       />
                     </div>
-                    <Button className="w-full mt-8 py-4">Send Message</Button>
+                    <Button className="w-full mt-8 py-4 cursor-pointer hover:text-primary-foreground">Send Message</Button>
                   </CardContent>
                 </MagicCard>
               </div>
