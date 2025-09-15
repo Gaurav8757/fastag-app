@@ -23,6 +23,7 @@ import { RippleButton } from "../magicui/ripple-button";
 import CarouselSection from "../Carousel/carousel";
 import { WobbleCard } from "../ui/wobble-card";
 import { MagicCard } from "../magicui/magic-card";
+import Link from "next/link";
 
 export default function LandingPage() {
 //   const { setActiveSection } = useStore();
@@ -350,7 +351,7 @@ export default function LandingPage() {
       {/* circle */}
 
       {/* CTA Section */}
-      <section className="py-10 bg-primary text-primary-foreground">
+      <section className="py-10 bg-secondary/90 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <div className="space-y-6 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-balance">
@@ -360,14 +361,12 @@ export default function LandingPage() {
               Join millions of satisfied customers and start your FASTag journey
               today
             </p>
-            <Button
-              size="lg"
-              variant="secondary"
-            //   onClick={onGetStarted}
-              className="text-lg px-8"
+            <Link
+            href="/login"
+              className="text-lg p-3 rounded bg-primary/80 hover:bg-primary"
             >
-              Get Started Now
-            </Button>
+              Get Started
+            </Link>
           </div>
         </div>
       </section>
