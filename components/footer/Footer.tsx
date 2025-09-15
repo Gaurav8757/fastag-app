@@ -29,7 +29,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      &copy; Copyright {new Date().getFullYear()} |{" "}
+      &copy; Copyright {new Date().getFullYear()-1} |{" "}
       <Link
         className="hover:scale-105 transition-all duration-300 hover:text-orange-500"
         href="/"
