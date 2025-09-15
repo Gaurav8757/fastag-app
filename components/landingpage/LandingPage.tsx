@@ -104,7 +104,7 @@ export default function LandingPage() {
       <section
         className="relative bg-fixed bg-center bg-cover bg-no-repeat py-20"
         style={{
-          backgroundImage: "url('/fasTag.jpg')",
+          backgroundImage: "url('/FasTag.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 backdrop-blur-sm z-0" />

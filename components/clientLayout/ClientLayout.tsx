@@ -1,7 +1,7 @@
 "use client";
 
 import { useStore } from "@/store/store";
-
+import { Analytics } from "@vercel/analytics/next"
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Toaster } from "@/components/ui/sonner"
@@ -52,6 +52,7 @@ export default function ClientLayout({
         onLogin={() => setIsAuthModalOpen(false)}
       />
       <Toaster position="top-center" />
+      <Analytics />
     </>
   );
 }

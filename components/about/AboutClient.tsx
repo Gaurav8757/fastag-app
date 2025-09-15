@@ -67,7 +67,7 @@ export function AboutClient() {
             data-aos="zoom-in"
           >
             <Image width={0} height={0}
-              src="/fasTag.jpg"
+              src="/FasTag.jpg"
               alt="ASL Wallet Office"
               className="w-full h-full object-cover mask-alpha mask-r-from-white mask-r-from-50% mask-r-to-black"
             />

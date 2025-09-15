@@ -44,7 +44,7 @@ export function HelpLine() {
     <Card
       className=" bg-opacity-70 md:p-8 relative bg-fixed bg-cover bg-center mx-auto rounded-none border-none"
       style={{
-        backgroundImage: "url('/fasTag.jpg')",
+        backgroundImage: "url('/FasTag.jpg')",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/50  to-white/50 backdrop-blur-lg z-0" />
