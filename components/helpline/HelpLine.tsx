@@ -42,7 +42,7 @@ export function HelpLine() {
 
   return (
     <Card
-      className=" bg-opacity-70 md:p-8 relative bg-fixed bg-cover bg-center mx-auto rounded-none border-none"
+      className="relative bg-opacity-70 p-4 md:p-8 bg-fixed bg-cover bg-center mx-auto rounded-none border-none"
       style={{
         backgroundImage: "url('/FasTag.jpg')",
       }}
@@ -64,13 +64,13 @@ export function HelpLine() {
         NHAI FASTag Helpline No. – 1033
       </TextAnimate>
 
-      <div className="container mx-auto  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1 text-sm md:text-base">
+      <div className="container mx-auto relative  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1 text-xs md:text-base">
         {bankData.map((bank, index) => (
           <div
             data-aos="zoom-in-up"
             data-aos-delay={index * 5}
             key={index}
-            className="w-54 h-24 mx-auto rounded hover:scale-101 transition-all duration-400 hover:shadow-smoke-lg relative overflow-hidden"
+            className="md:w-54 w-40 h-16 md:h-24 mx-auto rounded hover:scale-101 transition-all duration-400 hover:shadow-smoke-lg relative overflow-hidden"
           >
             <ShootingStars
               className="absolute inset-0 pointer-events-none"

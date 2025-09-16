@@ -116,11 +116,11 @@ export default function LandingPage() {
                 <Badge variant="secondary" className="w-fit">
                   Trusted by 10M+ Users
                 </Badge>
-                <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight">
+                <h1 className="text-3xl lg:text-6xl font-bold text-balance leading-tight">
                   Seamless <span className="text-primary">FASTag</span> Service
                   Provider
                 </h1>
-                <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
+                <p className="md:text-xl text-muted-foreground text-pretty leading-relaxed">
                   Recharge, track, and manage your FASTag with ease. Experience
                   lightning-fast toll payments and comprehensive transaction
                   service.
@@ -161,7 +161,7 @@ export default function LandingPage() {
         data-aos-anchor-placement="top-bottom"
         className="py-10 bg-muted/30"
       >
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6 md:px-4">
           <div className="text-center space-y-4 mb-16">
             <TextAnimate
               animation="fadeIn"
@@ -174,7 +174,7 @@ export default function LandingPage() {
             <TextAnimate
               animation="slideLeft"
               by="character"
-              className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto"
+              className="md:text-xl text-muted-foreground text-pretty max-w-2xl mx-auto"
             >
               Experience the future of toll payments with our comprehensive
               FASTag solutions
@@ -214,7 +214,7 @@ export default function LandingPage() {
             ].map((feature, index) => (
               <WobbleCard
                 key={index}
-                className={`text-center hover:shadow-lg ${
+                className={`text-center hover:shadow-lg  ${
                   index % 2 === 0 ? "bg-green-100 " : "bg-orange-100"
                 }   dark:bg-transparent transition-shadow`}
               >
@@ -263,9 +263,9 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-10">
+      <section className="py-6">
         <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
+          <div className="text-center space-y-4 mb-10">
             <TextAnimate
               animation="fadeIn"
               by="line"
@@ -277,7 +277,7 @@ export default function LandingPage() {
             <TextAnimate
               animation="slideLeft"
               by="character"
-              className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto"
+              className="md:text-xl text-muted-foreground text-pretty max-w-2xl mx-auto"
             >
               See what our customers say about their FASTag experience
             </TextAnimate>
@@ -317,7 +317,7 @@ export default function LandingPage() {
               >
                 <MagicCard
                   key={index}
-                  className="py-6 rounded-2xl hover:scale-101 transition-all duration-300"
+                  className="py-6 mx-4 md:mx-0 rounded-2xl hover:scale-101 transition-all duration-300"
                   gradientColor="#d4fbd4"
                 >
                   <CardHeader>
@@ -363,7 +363,7 @@ export default function LandingPage() {
             </p>
             <Link
             href="/login"
-              className="text-lg p-3 rounded bg-primary/80 hover:bg-primary"
+              className="p-2 px-4 rounded bg-primary/80 hover:bg-primary"
             >
               Get Started
             </Link>

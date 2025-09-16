@@ -18,13 +18,12 @@ export function AboutClient() {
       <div className="absolute top-[-100px] left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] z-0"></div>
       <div className="absolute bottom-[-80px] right-[10%] w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[100px] z-0"></div>
 
-      {/* <div className="container-fluid mx-auto px-4 relative z-10 space-y-20 bg-[url('/FasTag.jpg')] bg-transparent bg-fixed bg-cover bg-center bg-no-repeat"> */}
-      <div className="container mx-auto px-4  relative z-10 md:space-y-32 space-y-6">
+      <div className="container mx-auto px-4  relative z-10 md:space-y-24 space-y-6">
         {/* Overlay for blur and soft tint */}
         <div className="absolute inset-0  backdrop-blur-sm z-0 size-full" />
         {/* Header Section */}
 
-        <div className="text-center space-y-4 py-8 " data-aos="fade-up">
+        <div className="text-center space-y-4 pt-8 " data-aos="fade-up">
           <TextAnimate
             animation="fadeIn"
             by="line"
