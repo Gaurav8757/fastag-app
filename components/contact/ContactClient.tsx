@@ -1,3 +1,5 @@
+"use client"
+import { useIsMobile } from "@/hooks/use-mobile";
 import { AuroraText } from "../magicui/aurora-text";
 import { MagicCard } from "../magicui/magic-card";
 import { TextAnimate } from "../magicui/text-animate";
@@ -14,15 +16,20 @@ import { Textarea } from "../ui/textarea";
 import { Ripple } from "@/components/magicui/ripple";
 
 export function ContactClient() {
+  const isMobile = useIsMobile();
   return (
-    <div className="relative">
-      <Ripple
-        className="absolute inset-0 -top-70 left-54 mask-b-from-25% mask-t-to-75% z-0"
-        mainCircleSize={20}
-        numCircles={16}
-        mainCircleOpacity={0.24}
+    <>
+     <Ripple
+        className="absolute inset-0 md:-top-102 top-40 left-0 md:left-55 mask-b-from-25% mask-t-to-75% z-0"
+        mainCircleSize={10}
+        numCircles={isMobile ? 6 : 10}
+        mainCircleOpacity={0.3}
       />
+   
+    <div className="relative">
+      
       <section className="py-6 mb-24 relative">
+       
         <div className="container mx-auto px-4">
           <div className="px-1 mx-auto">
             <div className="text-center space-y-4 mb-16">
@@ -214,6 +221,6 @@ export function ContactClient() {
           </div>
         </div>
       </section>{" "}
-    </div>
+    </div> </>
   );
 }

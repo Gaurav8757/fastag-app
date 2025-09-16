@@ -10,9 +10,9 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import AnimatedNav from "./AnimatedNavbar";
 
-// interface NavigationProps {
-//   onLogin: () => void;
-// }
+interface NavigationProps {
+  onLogin: () => void;
+}
 
 interface NavLinkProps{
   id: string;

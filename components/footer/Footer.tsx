@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="text-center   text-sm px-6 pb-6 md:px-12 bg-slate-800 text-gray-300 dark:text-gray-400 tracking-wider">
+    <footer className="text-center  text-xs md:text-sm px-6 pb-6 md:px-12 bg-slate-800 text-gray-300 dark:text-gray-400 tracking-wider">
       <div className="w-full py-4 container  mx-auto border-b border-gray-700 mb-4">
-        <div className="flex sm:items-center justify-between">
+        <div className="flex sm:items-center  justify-between">
           <Link href="/" className="flex items-center gap-2 cursor-pointer">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">
@@ -15,7 +15,7 @@ export default function Footer() {
             </div>
             <span className="text-xl font-bold">FastPay</span>
           </Link>
-          <ul className="flex flex-wrap items-center text-sm font-medium text-gray-300 0 sm:mb-0 dark:text-gray-400">
+          <ul className="flex flex-wrap items-center font-medium text-gray-300 0 sm:mb-0 dark:text-gray-400">
             <li className="hover:text-slate-100 hover:scale-102 transition-all duration-300">
               <Link href="/privacy" className="me-4 md:me-6">
                 Privacy Policy
