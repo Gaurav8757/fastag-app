@@ -26,6 +26,7 @@ export default function RootLayout({
     
     <html lang="en" >
       <body className={`font-sans`}>
+         {modal}
         {/* providers re-render karta hai ui */}
         <AosProvider>
           <Navigation />
@@ -33,7 +34,7 @@ export default function RootLayout({
           <HelpLine />
           <Footer />
         </AosProvider>
-        {modal}
+       
         <Toaster position="top-right" />
         <Analytics />
       </body>

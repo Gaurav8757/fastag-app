@@ -32,10 +32,10 @@ export function Navigation() {
     }
   }, [isMobile, isMobileMenuOpen]);
 
-  const handleLoginClick = () => {
-    router.push("/login", { scroll: false }); // scroll false भी re-render रोकने में मदद करता है
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+const handleLoginClick = () => {
+  router.push("/login", { scroll: false });
+  setIsMobileMenuOpen(false); // avoid toggle to prevent flicker
+};
 
   const navItems: NavLinkProps[] = [
     { id: "/", label: "Home" },
