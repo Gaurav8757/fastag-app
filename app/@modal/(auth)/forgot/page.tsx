@@ -10,6 +10,6 @@ export default function ForgotModalIntercept() {
     //   onClose={() => router.back()}
     //   onSent={() => router.push("/login")} // Redirect back to login after reset
     // /> 
-    <div>Forgot</div>
+    <div>Forgot Page</div>
   );
 }
