@@ -19,9 +19,7 @@ export default function LoginModalIntercept() {
     setIsOpen(false); // First hide modal
 
     // Wait for modal transition to finish before navigating back
-    setTimeout(() => {
-      router.back();
-    }, 300); // Delay should match your <Dialog> transition duration
+ 
   };
 
   // Login success handler
