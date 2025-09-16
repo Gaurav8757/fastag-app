@@ -87,8 +87,7 @@ export function Navigation() {
             <Button
               onClick={handleLoginClick}
               size="sm"
-              className="md:block hidden cursor-pointer"
-            >
+              className="md:block hidden cursor-pointer">
               Login
             </Button>
           </div>
@@ -132,6 +131,7 @@ export function Navigation() {
             </div>
 
             <div className="border-t border-border px-4 py-4">
+             
               <Button
                 onClick={handleLoginClick}
                 className="text-left px-8 py-4 text-sm  font-medium text-white hover:text-white w-full cursor-pointer"
