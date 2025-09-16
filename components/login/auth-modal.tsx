@@ -93,7 +93,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
         minDelay={200}
         maxDelay={300}
       />
-      <Dialog open={isOpen} onOpenChange={handleClose}>
+      <Dialog open={isOpen} onOpenChange={(open) => { if (!open) handleClose(); }}>
         
         <DialogContent className="sm:max-w-lg text-center">
           <DialogHeader>
