@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import AnimatedNav from "./AnimatedNavbar";
+import { useStore } from "@/store/store";
 
 interface NavigationProps {
   onLogin: () => void;
@@ -21,9 +22,9 @@ interface NavLinkProps{
 
 export function Navigation() {
   const router = useRouter();
+   const { setIsAuthModalOpen } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
   const isMobile = useIsMobile();
   // 🔑 Auto-close sheet when switching to big screen
   useEffect(() => {
@@ -31,6 +32,14 @@ export function Navigation() {
       setIsMobileMenuOpen(false);
     }
   }, [isMobile, isMobileMenuOpen]);
+
+   const handleLoginClick = () => {
+    // Open modal in Zustand
+    setIsAuthModalOpen(true);
+
+    // Navigate to intercepted route
+    router.push("/login");
+  };
 
   const navItems:NavLinkProps[] = [
     { id: "/", label: "Home" },
@@ -80,7 +89,7 @@ export function Navigation() {
           <div className="flex items-center">
             {/* Auth Section */}
             <Button
-              onClick={() => router.push("/login")}
+              onClick={handleLoginClick}
               size="sm"
               className="md:block hidden"
             >
@@ -125,7 +134,7 @@ export function Navigation() {
 
             <div className="border-t border-border px-4 py-4">
               <Button
-                onClick={() => router.push("/login")}
+                onClick={handleLoginClick}
                 className="text-left px-8 py-4 text-sm  font-medium text-white hover:text-white w-full cursor-pointer"
               >
                 Login
