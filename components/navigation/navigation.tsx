@@ -110,12 +110,13 @@ export function Navigation() {
                 <Link
                   key={item.id}
                   href={item.id}
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  
                   className={`block w-full text-left px-2 py-2 rounded text-sm font-medium transition-colors hover:text-primary ${
                     pathname === item.id
                       ? "text-primary border-b-2 border-primary/50 bg-primary/5"
                       : "hover:text-primary"
                   }`}
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                   {item.label}
                 </Link>
