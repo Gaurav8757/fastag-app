@@ -19,9 +19,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { toast } from "sonner";
-import { useAuth } from "@/contexts/auth-context";
 import { ShootingStars } from "../ui/shooting-stars";
 import { Loader2 } from "lucide-react";
+import { useStore } from "@/store/store";
+import AosProvider from "../aos/AosProvider";
+
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -34,7 +36,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  // const { login } = useStore();
 
   const handleSendOtp = async () => {
     if (mobileNumber.length !== 10) {
@@ -61,7 +63,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      login(mobileNumber); // Use auth context login method
+      // login(mobileNumber); // Use auth context login method
       onLogin();
       onClose();
       // Reset form
@@ -80,7 +82,8 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   };
 
   return (
-    <div className="relative" data-aos="fade-up" data-aos-delay="500">
+    <AosProvider>
+    <div className="relative">
       <ShootingStars
         className="absolute inset-0 z-10 pointer-events-none"
         starColor="#ea871f"
@@ -91,7 +94,8 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
         maxDelay={300}
       />
       <Dialog open={isOpen} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-md text-center">
+        
+        <DialogContent className="sm:max-w-lg text-center">
           <DialogHeader>
             <DialogTitle className="text-center tracking-widest">
               Login to FastPay
@@ -209,7 +213,8 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
             </CardContent>
           </Card>
         </DialogContent>
+       
       </Dialog>
-    </div>
+    </div></AosProvider>
   );
 }

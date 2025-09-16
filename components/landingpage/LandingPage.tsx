@@ -30,11 +30,7 @@ export default function LandingPage() {
   return (
     <>
       {/* Hero Section */}
-      <Particles
-        className="absolute inset-0 z-10 w-[99%]"
-        size={1.5}
-        color="#1dbb0b"
-      />
+    
       <ShootingStars
         className="fixed inset-0 pointer-events-none"
         starColor="#ea871f"
@@ -45,6 +41,11 @@ export default function LandingPage() {
         maxDelay={400}
       />
       <section className="relative h-screen bg-cover bg-center bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <Particles
+        className="absolute inset-0 z-10 w-[99%]"
+        size={1.5}
+        color="#1dbb0b"
+      />
         {/* Overlay */}
         <div className="absolute inset-0 z-10"></div>
 

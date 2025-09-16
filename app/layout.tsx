@@ -3,7 +3,6 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
-import { AuthProvider } from "@/contexts/auth-context";
 import { LoaderOne } from "@/components/ui/loader";
 import "./globals.css";
 import { Navigation } from "@/components/navigation/navigation";
@@ -19,26 +18,24 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children, modal
+  children,
+  modal,
 }: {
   children: React.ReactNode;
- modal: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <AuthProvider>
-          <AosProvider>
-            <Suspense fallback={<LoaderOne />}>
-              <Navigation />
-              {children}
-              {modal}
-              <HelpLine />
-              <Footer />
-            </Suspense>
-            <Toaster position="top-center" />
-          </AosProvider>
-        </AuthProvider>
+        {/* providers re-render karta hai ui */}
+        <AosProvider>
+          <Navigation />
+          {children}
+          <HelpLine />
+          <Footer />
+        </AosProvider>
+        {modal}
+        <Toaster position="top-center" />
         <Analytics />
       </body>
     </html>

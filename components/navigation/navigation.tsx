@@ -15,14 +15,13 @@ interface NavigationProps {
   onLogin: () => void;
 }
 
-interface NavLinkProps{
+interface NavLinkProps {
   id: string;
-  label: string
+  label: string;
 }
 
 export function Navigation() {
   const router = useRouter();
-   const { setIsAuthModalOpen } = useStore();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isMobile = useIsMobile();
@@ -33,15 +32,12 @@ export function Navigation() {
     }
   }, [isMobile, isMobileMenuOpen]);
 
-   const handleLoginClick = () => {
-    // Open modal in Zustand
-    setIsAuthModalOpen(true);
-
-    // Navigate to intercepted route
-    router.push("/login");
+  const handleLoginClick = () => {
+    router.push("/login", { scroll: false }); // scroll false भी re-render रोकने में मदद करता है
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const navItems:NavLinkProps[] = [
+  const navItems: NavLinkProps[] = [
     { id: "/", label: "Home" },
     { id: "/about", label: "About" },
     { id: "/services", label: "Services" },
@@ -91,7 +87,7 @@ export function Navigation() {
             <Button
               onClick={handleLoginClick}
               size="sm"
-              className="md:block hidden"
+              className="md:block hidden cursor-pointer"
             >
               Login
             </Button>
@@ -99,12 +95,16 @@ export function Navigation() {
         </div>
 
         {/* Mobile Sheet Menu */}
-        <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen} >
+        <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTitle className="sr-only">menu</SheetTitle>
 
           <SheetContent side="left" className="w-64 p-0">
             <div className="p-4 border-b border-border flex items-center gap-2">
-              <Link href="/" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="flex items-center gap-2 cursor-pointer">
+              <Link
+                href="/"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="flex items-center gap-2 cursor-pointer"
+              >
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-sm">
                     FP
@@ -119,7 +119,6 @@ export function Navigation() {
                 <Link
                   key={item.id}
                   href={item.id}
-                  
                   className={`block w-full text-left px-2 py-2 rounded text-sm font-medium transition-colors hover:text-primary ${
                     pathname === item.id
                       ? "text-primary border-b-2 border-primary/50 bg-primary/5"

@@ -1,10 +1,10 @@
 "use client";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { LoaderOne } from "@/components/ui/loader";
 
-export default function AosProvider({ children }: { children: React.ReactNode }) {
+ const AosProvider = memo(({ children }: { children: React.ReactNode })=> {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,4 +25,6 @@ export default function AosProvider({ children }: { children: React.ReactNode })
   }
 
   return <>{children}</>;
-}
+})
+
+export default AosProvider;
