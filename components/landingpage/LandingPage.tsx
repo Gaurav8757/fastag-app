@@ -24,9 +24,10 @@ import CarouselSection from "../Carousel/carousel";
 import { WobbleCard } from "../ui/wobble-card";
 import { MagicCard } from "../magicui/magic-card";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function LandingPage() {
-//   const { setActiveSection } = useStore();
+const router = useRouter();
   return (
     <>
       {/* Hero Section */}
@@ -68,8 +69,8 @@ export default function LandingPage() {
               powerful UI, and cutting-edge design.
             </p>
             <RippleButton
-              rippleColor="##39ac37"
-            //   onClick={onGetStarted}
+              rippleColor="#39ac37"
+              onClick={()=> router.push("/login")}
               className="bg-green-600 text-white px-8 tracking-wider py-2 rounded-md font-semibold hover:bg-green-700 transition"
             >
               Get Started
@@ -132,6 +133,7 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
+                  onClick= {()=> router.push("/services")}
                   className="text-lg px-8 bg-transparent cursor-pointer">
                   Learn More
                 </Button>

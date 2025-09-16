@@ -2,12 +2,10 @@
 import { useRouter } from "next/navigation";
 import { AuthModal } from "@/components/login/auth-modal";
 
-
 import { useEffect, useState } from "react";
 export default function LoginModalIntercept() {
-  
   const router = useRouter();
- 
+
   // State to control modal visibility
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,10 +35,6 @@ export default function LoginModalIntercept() {
   };
 
   return (
-    <AuthModal
-      isOpen={isOpen}
-      onClose={handleClose} 
-      onLogin={handleLogin}
-    />
+    <AuthModal isOpen={isOpen} onClose={handleClose} onLogin={handleLogin} />
   );
 }
