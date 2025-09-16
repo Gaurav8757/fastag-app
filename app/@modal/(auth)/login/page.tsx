@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { AuthModal } from "@/components/login/auth-modal";
 
 export default function LoginModalIntercept() {
+  
   const router = useRouter();
 
   return (
