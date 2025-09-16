@@ -92,7 +92,6 @@ export function Navigation() {
             </Button>
           </div>
         </div>
-
         {/* Mobile Sheet Menu */}
         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <SheetTitle className="sr-only">menu</SheetTitle>
