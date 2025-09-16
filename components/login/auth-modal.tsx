@@ -36,6 +36,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isResendLoading, setResendIsLoading] = useState(false);
   // const { login } = useStore();
 
   const handleSendOtp = async () => {
@@ -46,11 +47,11 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
       return;
     }
 
-    setIsLoading(true);
+    setResendIsLoading(true);
     // Simulate API call
     setTimeout(() => {
       setIsOtpSent(true);
-      setIsLoading(false);
+      setResendIsLoading(false);
       toast("OTP sent to your mobile number!", {
         className: "bg-red-500 text-white",
       });
@@ -91,7 +92,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   };
 
   return (
-    <AosProvider>
+    // <AosProvider>
       <div className="relative">
         <ShootingStars
           className="absolute inset-0 z-10 pointer-events-none"
@@ -207,9 +208,10 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
                     <div className="text-center">
                       <Button
                         variant="link"
+                        className="disabled:cursor-not-allowed cursor-pointer"
                         size="sm"
                         onClick={handleSendOtp}
-                        disabled={isLoading}
+                        disabled={isResendLoading}
                       >
                         Resend OTP
                       </Button>
@@ -221,6 +223,6 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
           </DialogContent>
         </Dialog>
       </div>
-    </AosProvider>
+  
   );
 }
