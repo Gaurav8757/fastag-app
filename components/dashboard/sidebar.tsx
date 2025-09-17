@@ -158,18 +158,19 @@ export default function Sidebar() {
                 </AuroraText>
               </div>
             </Link>
-{!isMobileMenuOpen ? null :
-           ( <span className="text-lg font-semibold hover:cursor-pointer text-default transition-all duration-200">
-              {isMobileMenuOpen ? (
-                <SidebarOpen
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                />
-              ) : (
-                <SidebarClose
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                />
-              )}
-            </span>) }
+            {!isMobileMenuOpen ? null : (
+              <span className="text-lg font-semibold hover:cursor-pointer text-default transition-all duration-200">
+                {isMobileMenuOpen ? (
+                  <SidebarOpen
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  />
+                ) : (
+                  <SidebarClose
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  />
+                )}
+              </span>
+            )}
           </div>
 
           <div className="flex-1 overflow-y-auto py-4 px-4 space-y-6">
