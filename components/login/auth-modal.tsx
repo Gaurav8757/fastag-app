@@ -24,6 +24,7 @@ import { KeyRound, Loader2 } from "lucide-react";
 import AosProvider from "../aos/AosProvider";
 import { OTPInput } from "./otp-verify/otp-form";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -50,19 +51,19 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
 
     setResendIsLoading(true);
     try {
-      const response = await fetch("/api/auth/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber: mobileNumber }),
-      });
+      // const response = await fetch("/api/auth/send-otp", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ phoneNumber: mobileNumber }),
+      // });
 
-      const data = await response.json();
+      // const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send OTP");
-      }
+      // if (!response.ok) {
+      //   throw new Error(data.error || "Failed to send OTP");
+      // }
 
-      setSessionId(data.sessionId);
+      // setSessionId(data.sessionId);
       setIsOtpSent(true);
       toast("OTP sent to your mobile number!", {
         className: "bg-green-500 text-white",
@@ -84,21 +85,21 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
 
     setIsLoading(true);
     try {
-      const response = await fetch("/api/auth/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phoneNumber: mobileNumber,
-          otp: otp,
-          sessionId: sessionId,
-        }),
-      });
+      // const response = await fetch("/api/auth/verify-otp", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     phoneNumber: mobileNumber,
+      //     otp: otp,
+      //     sessionId: sessionId,
+      //   }),
+      // });
 
-      const data = await response.json();
+      // const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to verify OTP");
-      }
+      // if (!response.ok) {
+      //   throw new Error(data.error || "Failed to verify OTP");
+      // }
 
       toast("Login successful!", {
         className: "bg-green-500 text-white",
@@ -193,19 +194,18 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
                         maxLength={10}
                       />
                     </div>
-                   <div className="text-end text-xs md:text-sm relative">
-  <p className="text-gray-500 mb-1 flex items-center justify-end gap-1">
-     <KeyRound className="w-4 h-4 text-blue-700" />
-    Forgot your password? 
-  
-  <Link
-    href="/forgot"
-    className="text-blue-600 hover:text-blue-700 font-medium transition duration-200 hover:underline"
-  >
-    Reset it here
-  </Link>
-  </p>
-</div>
+                    <div className="text-end text-xs md:text-sm relative">
+                      <p className="text-gray-500 mb-1 flex items-center justify-end gap-1">
+                        <KeyRound className="w-4 h-4 text-blue-700" />
+                        Forgot your password?
+                        <Link
+                          href="/forgot"
+                          className="text-blue-600 hover:text-blue-700 font-medium transition duration-200 hover:underline"
+                        >
+                          Reset it here
+                        </Link>
+                      </p>
+                    </div>
                   </div>
                   <Button
                     onClick={handleSendOtp}

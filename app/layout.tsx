@@ -6,8 +6,9 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation/navigation";
 import { HelpLine } from "@/components/helpline/HelpLine";
 import Footer from "@/components/footer/Footer";
-import AosProvider from "@/components/aos/AosProvider"; // ✅ Import
+import AosProvider from "@/components/aos/AosProvider";
 import { Toaster } from "@/components/ui/sonner";
+import ClientWrapper from "@/components/clientRoot/ClientWrapper";
 
 export const metadata: Metadata = {
   title: "ASL FastPay - FASTag Service Provider",
@@ -23,18 +24,10 @@ export default function RootLayout({
   modal: React.ReactNode;
 }) {
   return (
-    
-    <html lang="en" >
+    <html lang="en">
       <body className={`font-sans`}>
-         {modal}
         {/* providers re-render karta hai ui */}
-        <AosProvider>
-          <Navigation />
-          {children}
-          <HelpLine />
-          <Footer />
-        </AosProvider>
-       
+        <ClientWrapper modal =  {modal}>{children}</ClientWrapper>
         <Toaster position="top-right" />
         <Analytics />
       </body>
