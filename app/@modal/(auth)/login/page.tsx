@@ -14,7 +14,7 @@ export default function LoginModalIntercept() {
 
   const handleLogin = () => {
     setIsOpen(false);
-    setTimeout(() => router.push("/dashboard"), 300);
+    setTimeout(() => router.push("/homepage"), 300);
     return null;
 
   };
