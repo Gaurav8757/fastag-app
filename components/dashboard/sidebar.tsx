@@ -38,7 +38,7 @@ const navigation = [
   {
     title: "Finance",
     items: [
-      { label: "Home", href: "/dashboard", icon: "Home" },
+      { label: "Home", href: "/homepage", icon: "Home" },
       { label: "Transactions", href: "/transactions", icon: "Wallet" },
       { label: "Invoices", href: "/invoices", icon: "Receipt" },
       { label: "Payments", href: "/payments", icon: "CreditCard" },
@@ -99,7 +99,7 @@ export default function Sidebar() {
       <Link
         href={href}
         onClick={handleNavigation}
-        className={`relative flex items-center px-3 py-3 text-sm rounded-md transition-colors tracking-wider
+        className={`relative flex items-center px-3 py-2 my-1 text-sm rounded-md transition-colors tracking-wider duration-500
           ${
             isActive
               ? "text-primary font-semibold"

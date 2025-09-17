@@ -1,11 +1,25 @@
-// app/(dashboard)/layout.tsx
+// /app/(admin)/layout.tsx
+import Sidebar from "@/components/dashboard/sidebar";
+import TopNav from "@/components/dashboard/top-nav";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex h-screen">
-      <main className="flex-1 bg-gray-100 overflow-auto">
-        {children}
-      </main>
-    </div>
+    
+        <div className="flex h-screen">
+          <Sidebar />
+          <div className="w-full flex flex-col">
+            <header className="h-16 border-b border-gray-200 dark:border-[#1F1F23]">
+              <TopNav />
+            </header>
+            <main className="flex-1 overflow-auto p-6 bg-white dark:bg-[#0F0F12]">
+              {children}
+            </main>
+          </div>
+        </div>
+
   );
 }
