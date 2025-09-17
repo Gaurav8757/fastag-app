@@ -21,7 +21,6 @@ import {
 import { toast } from "sonner";
 import { ShootingStars } from "../ui/shooting-stars";
 import { Loader2 } from "lucide-react";
-import { useStore } from "@/store/store";
 import AosProvider from "../aos/AosProvider";
 import { OTPInput } from "./otp-verify/otp-form";
 
