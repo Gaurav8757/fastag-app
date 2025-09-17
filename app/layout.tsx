@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-// import { GeistSans } from "geist/font/sans";
-// import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { Navigation } from "@/components/navigation/navigation";
-import { HelpLine } from "@/components/helpline/HelpLine";
-import Footer from "@/components/footer/Footer";
-import AosProvider from "@/components/aos/AosProvider";
 import { Toaster } from "@/components/ui/sonner";
-import ClientWrapper from "@/components/clientRoot/ClientWrapper";
+import Layout from "@/components/layout/layout";
 
 export const metadata: Metadata = {
   title: "ASL FastPay - FASTag Service Provider",
@@ -27,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans`}>
         {/* providers re-render karta hai ui */}
-        <ClientWrapper modal =  {modal}>{children}</ClientWrapper>
+        <Layout modal = {modal}>{children}</Layout>
         <Toaster position="top-right" />
         <Analytics />
       </body>
