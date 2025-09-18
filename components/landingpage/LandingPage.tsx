@@ -41,7 +41,7 @@ const router = useRouter();
         minDelay={200}
         maxDelay={400}
       />
-      <section className="relative h-screen bg-cover bg-center bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <section className="relative lg:h-screen bg-cover bg-center bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <Particles
         className="absolute inset-0 z-10 w-[99%]"
         size={1.5}
@@ -105,7 +105,7 @@ const router = useRouter();
 
       {/* abouts */}
       <section
-        className="relative bg-fixed bg-center bg-cover bg-no-repeat py-20"
+        className="relative bg-fixed bg-center bg-cover bg-no-repeat lg:py-20 py-10"
         style={{
           backgroundImage: "url('/FasTag.jpg')",
         }}
@@ -267,7 +267,7 @@ const router = useRouter();
 
       {/* Testimonials Section */}
       <section className="py-6">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto lg:px-4">
           <div className="text-center space-y-4 mb-10">
             <TextAnimate
               animation="fadeIn"

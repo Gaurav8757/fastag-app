@@ -1,40 +1,48 @@
-import crypto from 'crypto';
+import crypto from "crypto";
 
 const ENC_TYPE = process.env.NEXT_ENC_TYPE as string;
 const ENC_KEY = process.env.NEXT_ENC_KEY as string;
-const IV_LENGTH = parseInt(process.env.NEXT_IV_LENGTH || '16', 16);
+// const key = Buffer.from(ENC_KEY, "base64");
+const key = crypto.randomBytes(32)
+const ivLength = 16;
 
-const key = Buffer.from(ENC_KEY, 'hex'); // or 'hex' based on your format
-
-export const encrypt = (val: string): string => {
-  const iv = crypto.randomBytes(IV_LENGTH);
+// Encrypt function (returns base64(iv + encryptedData))
+export const encryptData = (plainText: string): string => {
+  // AES-256-CBC IV size
+  const iv = crypto.randomBytes(ivLength);
 
   const cipher = crypto.createCipheriv(ENC_TYPE, key, iv);
-  let encrypted = cipher.update(val, 'utf8', 'base64');
-  encrypted += cipher.final('base64');
+  const encrypted = Buffer.concat([
+    cipher.update(plainText, "utf8"),
+    cipher.final(),
+  ]);
 
-  const ivBase64 = iv.toString('base64');
-  return `${ivBase64}:${encrypted}`;
+  // Combine IV + encrypted text → base64 encode
+  return Buffer.concat([iv, encrypted]).toString("base64");
 };
 
-export const decrypt = (encryptedString: string): string => {
-  const [ivBase64, encrypted] = encryptedString.split(':');
-  const iv = Buffer.from(ivBase64, 'base64');
+// Decrypt function
+export const decryptData = (cipherText: string): string => {
+  const cipherData = Buffer.from(cipherText, "base64");
+
+  const iv = cipherData.subarray(0, ivLength);
+  const encrypted = cipherData.subarray(ivLength);
 
   const decipher = crypto.createDecipheriv(ENC_TYPE, key, iv);
-  let decrypted = decipher.update(encrypted, 'base64', 'utf8');
-  decrypted += decipher.final('utf8');
+  const decrypted = Buffer.concat([
+    decipher.update(encrypted),
+    decipher.final(),
+  ]);
 
-  return decrypted;
+  return decrypted.toString("utf8");
 };
 
-// Example (for testing only)
-if (process.env.NODE_ENV !== 'production') {
-  const phrase = 'who let the dogs out';
+if (process.env.NODE_ENV !== "production") {
+  const phrase = "Hello World! AES-256-CBC Test";
+  
+  const encrypted = encryptData(phrase);
+  const decrypted = decryptData(encrypted);
 
-  const encrypted = encrypt(phrase);
-  const decrypted = decrypt(encrypted);
-
-  console.log("Encrypted:", encrypted);
-  console.log("Decrypted:", decrypted);
+  console.log("Encrypted Base64:", encrypted);
+  console.log("Decrypted:", decrypted); // should match the original phrase
 }
