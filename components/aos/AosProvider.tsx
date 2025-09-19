@@ -9,7 +9,7 @@ import { LoaderOne } from "@/components/ui/loader";
 
   useEffect(() => {
     // Initialize AOS animations
-    AOS.init({ duration: 800, once: false });
+    AOS.init({ duration: 600, once: false });
 
     // Simulate loading for 1 second
     const timer = setTimeout(() => setLoading(false), 500);

@@ -1,7 +1,6 @@
 import { Card } from "../ui/card";
 import { TextAnimate } from "../magicui/text-animate";
 import { ShootingStars } from "../ui/shooting-stars";
-import { DirectionAwareHover } from "../ui/direction-aware-hover";
 export function HelpLine() {
 const bankData = [
   { name: "Airtel Payments Bank", contact: "400/8800-688-006", imageUrl: "airtel.png" },
@@ -70,7 +69,7 @@ const bankData = [
         {bankData.map((bank, index) => (
           <div
             data-aos="zoom-in-up"
-            // data-aos-delay={index * 10}
+            data-aos-delay={index * 2}
             key={index}
             className=" rounded transition-all duration-400 hover:shadow-smoke-lg relative overflow-hidden"
           >
