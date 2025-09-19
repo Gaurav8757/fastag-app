@@ -25,6 +25,8 @@ import { WobbleCard } from "../ui/wobble-card";
 import { MagicCard } from "../magicui/magic-card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 
 export default function LandingPage() {
 const router = useRouter();
@@ -65,8 +67,8 @@ const router = useRouter();
               <AuroraText>Seamless FASTag Service Provider</AuroraText>
             </h1>
             <p className="text-lg md:text-xl lg:mb-8">
-              Join the revolution in modern web development. Tailored solutions,
-              powerful UI, and cutting-edge design.
+              ASLWallets brings you a fast, secure, and user-friendly way to manage your <strong>FASTag</strong> needs. 
+              From instant recharges to 24/7 support, our platform ensures smooth travel on national highways. Experience lightning-fast processing, real-time updates, and secure payments — all in one place.
             </p>
             <RippleButton
               rippleColor="#39ac37"
@@ -111,21 +113,20 @@ const router = useRouter();
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 backdrop-blur-sm z-0" />
+       
         <div className="relative container mx-auto px-4 z-10">
           <div className="grid lg:grid-cols-2 gap-6 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge variant="secondary" className="w-fit">
-                  Trusted by 10M+ Users
-                </Badge>
+               
+                  <Image src="/fastagbanners.jpg" alt="fastag" width={500} height={80}/>
+                
                 <h1 className="text-3xl lg:text-6xl font-bold text-balance leading-tight">
-                  Seamless <span className="text-primary">FASTag</span> Service
+                  Go Contactless with  <span className="text-primary">ASL Wallets FASTag</span>  Service
                   Provider
                 </h1>
                 <p className="md:text-xl text-muted-foreground text-pretty leading-relaxed">
-                  Recharge, track, and manage your FASTag with ease. Experience
-                  lightning-fast toll payments and comprehensive transaction
-                  service.
+                 FASTag is an RFID passive tag used for making toll payments directly from the customer’s linked prepaid, savings, or current account. It is affixed to the windshield of the vehicle and enables the customer to drive through toll plazas without stopping for any toll payments. The toll fare is directly deducted from the linked account of the customer. FASTag is also vehicle-specific, and once it is affixed to a vehicle, it cannot be transferred to another vehicle.
                 </p>
               </div>
 

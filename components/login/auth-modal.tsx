@@ -41,7 +41,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isResendLoading, setResendIsLoading] = useState(false);
-   const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
   // const { login } = useStore();
 
   const handleSendOtp = async () => {
@@ -149,19 +149,18 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
         maxDelay={300}
       />
       <Dialog open={isOpen} onOpenChange={handleClose}>
-              gradientColor="#0033ff1e"
-              gradientColor="#0033ff1e"
+   
         <DialogContent className="sm:max-w-md text-center text-black bg-gradient-to-bl from-blue-50 to-[#0033ff0e]">
           <DialogHeader>
             <DialogTitle className="text-center tracking-widest">
               <div className="flex items-center justify-center">
-                             <Image
-                               src="/logo.png"
-                               alt="aslwallets fastag"
-                               width={isMobile ? 90 : 140}
-                               height={isMobile ? 60 : 100}
-                             />
-                           </div>
+                <Image
+                  src="/logo.png"
+                  alt="aslwallets fastag"
+                  width={isMobile ? 90 : 140}
+                  height={isMobile ? 60 : 100}
+                />
+              </div>
             </DialogTitle>
             <DialogDescription className="text-center text-xs md:text-base">
               Get started with FASTag services

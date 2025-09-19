@@ -14,7 +14,6 @@ import { ShootingStars } from "../ui/shooting-stars";
 export function AboutClient() {
   return (
     <section className="py-0 mx-auto bg-slate-100/80 text-gray-900 relative overflow-hidden">
-     
       <div className="absolute top-[-100px] left-[10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] z-0"></div>
       <div className="absolute bottom-[-80px] right-[10%] w-[500px] h-[500px] bg-secondary/15 rounded-full blur-[100px] z-0"></div>
 
@@ -66,7 +65,9 @@ export function AboutClient() {
             className="rounded-2xl items-end overflow-hidden shadow-glow-primary  "
             data-aos="zoom-in"
           >
-            <Image width={0} height={0}
+            <Image
+              width={0}
+              height={0}
               src="/FasTag.jpg"
               alt="ASL Wallet Office"
               className="w-full h-full object-cover mask-alpha mask-r-from-white mask-r-from-50% mask-r-to-black"
@@ -105,39 +106,34 @@ export function AboutClient() {
               title: "Scalability",
               desc: "Growing infrastructure that supports millions of users.",
             },
-          ].map((val, idx) => (  <div
-                   data-aos="zoom-in"
-              data-aos-delay={idx * 150}
-                  key={idx}
-                >
-                     <ShootingStars
-              className="fixed inset-0 z-10 pointer-events-none"
-              starColor="#ea871f"
-              trailColor="#39ac37"
-            minSpeed={5}
-        maxSpeed={15}
-        minDelay={200}
-        maxDelay={400}
-            />
-            <MagicCard
-              key={idx}
-              gradientColor="#0033ff1e"
-              className="hover:scale-102 p-4 transition-all duration-300 backdrop-blur-md aspect-rectangle border-0 border-primary-light rounded text-center "
-           
-            >
-             
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-primary">
-                  {val.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-700 text-base">
-                  {val.desc}
-                </CardDescription>
-              </CardContent>
-             
-            </MagicCard> </div>
+          ].map((val, idx) => (
+            <div data-aos="zoom-in" data-aos-delay={idx * 150} key={idx}>
+              <ShootingStars
+                className="fixed inset-0 z-10 pointer-events-none"
+                starColor="#ea871f"
+                trailColor="#39ac37"
+                minSpeed={5}
+                maxSpeed={15}
+                minDelay={200}
+                maxDelay={400}
+              />
+              <MagicCard
+                key={idx}
+                gradientColor="#0033ff1e"
+                className="hover:scale-102 p-4 transition-all duration-300 backdrop-blur-md aspect-rectangle border-0 border-primary-light rounded text-center "
+              >
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-primary">
+                    {val.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-gray-700 text-base">
+                    {val.desc}
+                  </CardDescription>
+                </CardContent>
+              </MagicCard>{" "}
+            </div>
           ))}
         </div>
 
@@ -228,9 +224,10 @@ export function AboutClient() {
             Ready to partner with ASL WALLETS or want to know more? Reach out
             today and let’s build a better future together.
           </p>
-          <Link href="/contact" 
-          
-          className="px-8 py-4 bg-secondary text-white font-semibold rounded-full shadow-glow-secondary hover:bg-secondary-light transition">
+          <Link
+            href="/contact"
+            className="px-8 py-4 bg-secondary text-white font-semibold rounded-full shadow-glow-secondary hover:bg-secondary-light transition"
+          >
             Contact Us
           </Link>
         </div>
