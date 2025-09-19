@@ -49,7 +49,7 @@ const bankData = [
         backgroundImage: "url('/FasTag.jpg')",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/50  to-white/50 backdrop-blur-lg z-0" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/50  to-white/60 backdrop-blur-sm z-0" />
       <TextAnimate
         animation="fadeIn"
         by="line"
@@ -83,7 +83,7 @@ const bankData = [
               minDelay={200}
               maxDelay={400}
             />
-            <p className="font-semibold ">{bank.name}</p>
+            <p className="font-semibold text-primary">{bank.name}</p>
             <p className="text-sm">{bank.contact}</p>
           </div>
         ))}

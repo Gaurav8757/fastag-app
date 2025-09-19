@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
       {/* 2nd container */}
-      <div className="w-full md:flex md:justify-between container mx-auto space-y-4 md:space-y-0 border-gray-700 px-1">
+      <div className="w-full flex flex-col md:flex-row items-center justify-center md:justify-between container mx-auto space-y-4 md:space-y-0 border-gray-700 px-1">
         <div className="">
           &copy; Copyright {new Date().getFullYear() - 1} |{" "}
           <Link
