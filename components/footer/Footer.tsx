@@ -15,16 +15,16 @@ export default function Footer() {
     <footer className="text-center  flex flex-col justify-between text-xs md:text-sm px-8 pb-6 md:px-12 bg-gradient-to-tr from-zinc-700 to-slate-900 text-gray-300 dark:text-gray-400 backdrop-blur-3xl tracking-wider">
       <div className="w-full py-4 container  mx-auto border-b border-gray-700 mb-4">
         <div className="flex sm:items-center  justify-between">
-             <Link href="/" className="flex items-center gap-2 cursor-pointer">
-              <div className="flex items-center justify-center">
-                <Image
-                  src="/logo.png"
-                  alt="aslwallets fastag"
-                  width={isMobile ? 95 : 140}
-                  height={isMobile ? 65 : 100}
-                />
-              </div>
-            </Link>
+          <Link href="/" className="flex items-center gap-2 cursor-pointer">
+            <div className="flex items-center justify-center">
+              <Image
+                src="/logo.png"
+                alt="aslwallets fastag"
+                width={isMobile ? 95 : 140}
+                height={isMobile ? 65 : 100}
+              />
+            </div>
+          </Link>
           <ul className="flex flex-wrap items-center font-medium text-gray-300 0 sm:mb-0 dark:text-gray-400">
             <li className="hover:text-slate-100 hover:scale-102 transition-all duration-300">
               <Link href="/privacy" className="me-4 md:me-6">
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
       {/* 2nd container */}
-      <div className="w-full md:flex md:justify-between container mx-auto space-y-4 md:space-y-0 border-gray-700 px-2">
+      <div className="w-full md:flex md:justify-between container mx-auto space-y-4 md:space-y-0 border-gray-700 px-1">
         <div className="">
           &copy; Copyright {new Date().getFullYear() - 1} |{" "}
           <Link
@@ -61,7 +61,7 @@ export default function Footer() {
             ASL Solutions Tech Pvt. Ltd.
           </Link>
         </div>
-        <div className="flex gap-3 sm:justify-center mx-auto">
+        <div className="flex gap-3 sm:justify-center">
           {/* YouTube */}
           <Link
             href="https://youtube.com/"

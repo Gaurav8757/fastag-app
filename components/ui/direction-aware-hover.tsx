@@ -78,25 +78,19 @@ export const DirectionAwareHover = ({
           exit="exit"
         >
           <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/40 z-10 transition duration-500" />
-          <motion.div
-            variants={variants}
-            className="h-full w-full relative bg-gray-50 dark:bg-black"
-            transition={{
-              duration: 0.2,
-              ease: "easeOut",
-            }}
-          >
+          <div
+            className="h-full w-full bg-transparent">
             <img
               alt="image"
               className={cn(
-                "h-full w-full object-cover scale-[1.15]",
+                "h-full w-full  object-cover scale-[1]",
                 imageClassName
               )}
               width="1000"
               height="1000"
               src={imageUrl}
             />
-          </motion.div>
+          </div>
           <motion.div
             variants={textVariants}
             transition={{
