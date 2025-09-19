@@ -12,7 +12,7 @@ import { LoaderOne } from "@/components/ui/loader";
     AOS.init({ duration: 800, once: false });
 
     // Simulate loading for 1 second
-    const timer = setTimeout(() => setLoading(false), 1000);
+    const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
 

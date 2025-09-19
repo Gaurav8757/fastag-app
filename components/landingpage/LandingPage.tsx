@@ -27,13 +27,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-
 export default function LandingPage() {
-const router = useRouter();
+  const router = useRouter();
   return (
     <>
       {/* Hero Section */}
-    
+
       <ShootingStars
         className="fixed inset-0 pointer-events-none"
         starColor="#ea871f"
@@ -45,10 +44,10 @@ const router = useRouter();
       />
       <section className="relative lg:h-screen bg-cover bg-center bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <Particles
-        className="absolute inset-0 z-10 w-[99%]"
-        size={1.5}
-        color="#0051ba"
-      />
+          className="absolute inset-0 z-10 w-[99%]"
+          size={1.5}
+          color="#0051ba"
+        />
         {/* Overlay */}
         <div className="absolute inset-0 z-10"></div>
 
@@ -60,19 +59,25 @@ const router = useRouter();
             data-aos="fade-up"
             data-aos-duration="800"
           >
-            <Badge variant="secondary" className="w-fit text-slate-800 md:text-sm">
+            <Badge
+              variant="secondary"
+              className="w-fit text-slate-800 md:text-sm"
+            >
               Trusted by 10M+ Users
             </Badge>
             <h1 className="text-4xl lg:text-6xl font-bold">
               <AuroraText>Seamless FASTag Service Provider</AuroraText>
             </h1>
             <p className="text-lg md:text-xl lg:mb-8">
-              ASLWallets brings you a fast, secure, and user-friendly way to manage your <strong>FASTag</strong> needs. 
-              From instant recharges to 24/7 support, our platform ensures smooth travel on national highways. Experience lightning-fast processing, real-time updates, and secure payments — all in one place.
+              ASLWallets brings you a fast, secure, and user-friendly way to
+              manage your <strong>FASTag</strong> needs. From instant recharges
+              to 24/7 support, our platform ensures smooth travel on national
+              highways. Experience lightning-fast processing, real-time updates,
+              and secure payments — all in one place.
             </p>
             <RippleButton
               rippleColor="#39ac37"
-              onClick={()=> router.push("/login")}
+              onClick={() => router.push("/login")}
               className="bg-primary text-white px-8 tracking-wider py-2 rounded-md font-semibold hover:bg-[#033577] transition"
             >
               Get Started
@@ -113,20 +118,25 @@ const router = useRouter();
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 backdrop-blur-sm z-0" />
-       
+
         <div className="relative container mx-auto px-4 z-10">
-          <div className="grid lg:grid-cols-2 gap-6 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 items-center justify-items-stretch">
             <div className="space-y-8">
               <div className="space-y-4">
-               
-                  <Image src="/fastagbanners.jpg" alt="fastag" width={500} height={80}/>
-                
                 <h1 className="text-3xl lg:text-6xl font-bold text-balance leading-tight">
-                  Go Contactless with  <span className="text-primary">ASL Wallets FASTag</span>  Service
-                  Provider
+                  Go Contactless with{" "}
+                  <span className="text-primary">ASL Wallets FASTag</span>{" "}
+                  Service Provider
                 </h1>
                 <p className="md:text-xl text-muted-foreground text-pretty leading-relaxed">
-                 FASTag is an RFID passive tag used for making toll payments directly from the customer’s linked prepaid, savings, or current account. It is affixed to the windshield of the vehicle and enables the customer to drive through toll plazas without stopping for any toll payments. The toll fare is directly deducted from the linked account of the customer. FASTag is also vehicle-specific, and once it is affixed to a vehicle, it cannot be transferred to another vehicle.
+                  FASTag is an RFID passive tag used for making toll payments
+                  directly from the customer’s linked prepaid, savings, or
+                  current account. It is affixed to the windshield of the
+                  vehicle and enables the customer to drive through toll plazas
+                  without stopping for any toll payments. The toll fare is
+                  directly deducted from the linked account of the customer.
+                  FASTag is also vehicle-specific, and once it is affixed to a
+                  vehicle, it cannot be transferred to another vehicle.
                 </p>
               </div>
 
@@ -134,26 +144,25 @@ const router = useRouter();
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick= {()=> router.push("/service")}
-                  className="text-lg px-8 bg-transparent cursor-pointer">
+                  onClick={() => router.push("/service")}
+                  className="text-lg px-8 bg-transparent cursor-pointer"
+                >
                   Learn More
                 </Button>
               </div>
-
-              <div className="flex items-center gap-4 pt-4">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-medium">Instant Recharge</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-medium">Secure Payments</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-medium">24/7 Support</span>
-                </div>
-              </div>
+            </div>
+            <div
+              className="w-full  mt-10 md:mt-0"
+              data-aos="zoom-in-up"
+              data-aos-duration="600"
+            >
+              <Image
+                src="/landingp2.png"
+                alt="fastag"
+                width={0}
+                height={0}
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
@@ -267,7 +276,7 @@ const router = useRouter();
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-6">
+      <section className="py-12">
         <div className="container mx-auto lg:px-4">
           <div className="text-center space-y-4 mb-10">
             <TextAnimate
@@ -355,14 +364,21 @@ const router = useRouter();
       {/* circle */}
 
       {/* CTA Section */}
-      <section className="mx-auto rounded-xl lg:max-w-[79%] sm:max-w-[82%] px-4 w-full overflow-hidden mb-7 md:px-0">
-       
-          <picture className="w-full h-full rounded-xl">
-            <Image src="/landingp1.png" alt="fastag" width={0} height={0} className="w-full h-full rounded-xl"/>
-                </picture>
+      <section
+        className="mx-auto w-full container rounded-2xl overflow-hidden mb-6 px-4 md:px-0"
+        data-aos="zoom-in-up"
+        data-aos-duration="500"
+      >
+        <picture className="block w-full h-auto md:px-4">
+          <Image
+            src="/landingp1.png"
+            alt="fastag"
+            width={1200} // Use a real width/height ratio of your image
+            height={675} // Example for 16:9 ratio
+            className="w-full h-auto rounded-2xl"
+          />
+        </picture>
       </section>
-
-   
     </>
   );
 }
