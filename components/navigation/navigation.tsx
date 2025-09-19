@@ -9,7 +9,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import AnimatedNav from "./AnimatedNavbar";
-import { useStore } from "@/store/store";
 
 interface NavigationProps {
   onLogin: () => void;
@@ -40,7 +39,7 @@ const handleLoginClick = () => {
   const navItems: NavLinkProps[] = [
     { id: "/", label: "Home" },
     { id: "/about", label: "About" },
-    { id: "/services", label: "Services" },
+    { id: "/service", label: "Services" },
     { id: "/pricing", label: "Pricing" },
     { id: "/contact", label: "Contact" },
     { id: "/faqs", label: "FAQs" },

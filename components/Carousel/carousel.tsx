@@ -18,6 +18,7 @@ const plugin = React.useRef(
   )
    return (
     <div className="w-full mx-auto justify-center">
+      
       <Carousel
         plugins={[plugin?.current]}
         className="w-full"
@@ -25,11 +26,13 @@ const plugin = React.useRef(
         onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
+          
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
               <div className="p-1">
+                
                 <Card className="p-0">
-                  <CardContent className="relative aspect-[4/3] w-full overflow-hidden rounded-xl p-0 shadow-lg">
+                  <CardContent className="relative aspect-[4/3] w-full overflow-hidden rounded-xl p-0">
                      <Image width={0} height={0}
                                    src="/modern-toll-booth-with-vehicles-and-fastag-technol.jpg"
                                    alt="FASTag Technology"
