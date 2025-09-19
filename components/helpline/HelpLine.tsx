@@ -64,7 +64,7 @@ export function HelpLine() {
         NHAI FASTag Helpline No. – 1033
       </TextAnimate>
 
-      <div className="container mx-auto relative  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1 text-xs md:text-base">
+      <div className="container mx-auto relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-1 text-xs md:text-sm">
         {bankData.map((bank, index) => (
           <div
             data-aos="zoom-in-up"

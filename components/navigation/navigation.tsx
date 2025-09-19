@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import AnimatedNav from "./AnimatedNavbar";
+import Image from "next/image";
 
 interface NavigationProps {
   onLogin: () => void;
@@ -31,10 +32,10 @@ export function Navigation() {
     }
   }, [isMobile, isMobileMenuOpen]);
 
-const handleLoginClick = () => {
-  router.push("/login", { scroll: false });
-  setIsMobileMenuOpen(false); // avoid toggle to prevent flicker
-};
+  const handleLoginClick = () => {
+    router.push("/login", { scroll: false });
+    setIsMobileMenuOpen(false); // avoid toggle to prevent flicker
+  };
 
   const navItems: NavLinkProps[] = [
     { id: "/", label: "Home" },
@@ -46,7 +47,7 @@ const handleLoginClick = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
@@ -66,12 +67,14 @@ const handleLoginClick = () => {
             </Button>
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 cursor-pointer">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">
-                  FP
-                </span>
+              <div className="flex items-center justify-center">
+                <Image
+                  src="/logo.png"
+                  alt="aslwallets fastag"
+                  width={isMobile ? 90 : 140}
+                  height={isMobile ? 60 : 100}
+                />
               </div>
-              <span className="text-xl font-bold">FastPay</span>
             </Link>
           </div>
           {/* Desktop Navigation */}
@@ -86,7 +89,8 @@ const handleLoginClick = () => {
             <Button
               onClick={handleLoginClick}
               size="sm"
-              className="md:block hidden cursor-pointer">
+              className="md:block hidden cursor-pointer"
+            >
               Login
             </Button>
           </div>
@@ -102,12 +106,14 @@ const handleLoginClick = () => {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="flex items-center gap-2 cursor-pointer"
               >
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">
-                    FP
-                  </span>
-                </div>
-                <span className="text-xl font-bold">FastPay</span>
+               <div className="flex items-center justify-center">
+                <Image
+                  src="/logo.png"
+                  alt="aslwallets fastag"
+                  width={isMobile ? 100 : 140}
+                  height={isMobile ? 60 : 100}
+                />
+              </div>
               </Link>
             </div>
 
@@ -129,7 +135,6 @@ const handleLoginClick = () => {
             </div>
 
             <div className="border-t border-border px-4 py-4">
-             
               <Button
                 onClick={handleLoginClick}
                 className="text-left px-8 py-4 text-sm  font-medium text-white hover:text-white w-full cursor-pointer"

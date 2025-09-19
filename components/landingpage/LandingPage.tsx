@@ -133,7 +133,7 @@ const router = useRouter();
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick= {()=> router.push("/services")}
+                  onClick= {()=> router.push("/service")}
                   className="text-lg px-8 bg-transparent cursor-pointer">
                   Learn More
                 </Button>

@@ -19,7 +19,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { toast } from "sonner";
-import { useAuth } from "@/contexts/auth-context";
+// import { useAuth } from "@/contexts/auth-context";
 import { ShootingStars } from "../ui/shooting-stars";
 import { Loader2 } from "lucide-react";
 
@@ -34,7 +34,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
   const handleSendOtp = async () => {
     if (mobileNumber.length !== 10) {
@@ -61,7 +61,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      login(mobileNumber); // Use auth context login method
+      // login(mobileNumber); // Use auth context login method
       onLogin();
       onClose();
       // Reset form
