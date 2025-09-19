@@ -61,7 +61,7 @@ export default function Footer() {
             ASL Solutions Tech Pvt. Ltd.
           </Link>
         </div>
-        <div className="flex gap-3 sm:justify-center">
+        <div className="flex gap-3 sm:justify-center mx-auto">
           {/* YouTube */}
           <Link
             href="https://youtube.com/"

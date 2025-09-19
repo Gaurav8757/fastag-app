@@ -326,6 +326,7 @@ export default function LandingPage() {
               <div
                 data-aos-delay={testimonial.duration}
                 data-aos="fade-top"
+                className="text-sm"
                 key={index}
               >
                 <MagicCard

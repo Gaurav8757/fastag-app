@@ -68,7 +68,7 @@ export function HelpLine() {
         {bankData.map((bank, index) => (
           <div
             data-aos="zoom-in-up"
-            data-aos-delay={index * 3}
+            data-aos-delay={index * 50}
             key={index}
             className="md:w-54 w-40 h-16 md:h-24 mx-auto rounded hover:scale-101 transition-all duration-400 hover:shadow-smoke-lg relative overflow-hidden"
           >
