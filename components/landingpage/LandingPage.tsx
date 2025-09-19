@@ -355,24 +355,11 @@ const router = useRouter();
       {/* circle */}
 
       {/* CTA Section */}
-      <section className="py-10 bg-primary/90 text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <div className="space-y-6 max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-balance">
-              Ready to Experience Seamless Toll Payments?
-            </h2>
-            <p className="text-xl opacity-90 text-pretty">
-              Join millions of satisfied customers and start your FASTag journey
-              today
-            </p>
-            <Link
-            href="/login"
-              className="p-2 px-4 rounded bg-secondary/80 hover:bg-secondary"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
+      <section className="mx-auto rounded-xl lg:max-w-[79%] sm:max-w-[82%] px-4 w-full overflow-hidden mb-7 md:px-0">
+       
+          <picture className="w-full h-full rounded-xl">
+            <Image src="/landingp1.png" alt="fastag" width={0} height={0} className="w-full h-full rounded-xl"/>
+                </picture>
       </section>
 
    
