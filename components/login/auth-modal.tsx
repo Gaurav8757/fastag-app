@@ -149,7 +149,9 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
         maxDelay={300}
       />
       <Dialog open={isOpen} onOpenChange={handleClose}>
-        <DialogContent className="sm:max-w-md text-center text-black bg-gradient-to-bl from-green-50 to-orange-50">
+              gradientColor="#0033ff1e"
+              gradientColor="#0033ff1e"
+        <DialogContent className="sm:max-w-md text-center text-black bg-gradient-to-bl from-blue-50 to-[#0033ff0e]">
           <DialogHeader>
             <DialogTitle className="text-center tracking-widest">
               <div className="flex items-center justify-center">
