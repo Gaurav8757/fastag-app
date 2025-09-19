@@ -25,6 +25,8 @@ import AosProvider from "../aos/AosProvider";
 import { OTPInput } from "./otp-verify/otp-form";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Image from "next/image";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -39,6 +41,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isResendLoading, setResendIsLoading] = useState(false);
+   const isMobile = useIsMobile();
   // const { login } = useStore();
 
   const handleSendOtp = async () => {
@@ -149,7 +152,14 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
         <DialogContent className="sm:max-w-md text-center text-black bg-gradient-to-bl from-green-50 to-orange-50">
           <DialogHeader>
             <DialogTitle className="text-center tracking-widest">
-              Login to FastPay
+              <div className="flex items-center justify-center">
+                             <Image
+                               src="/logo.png"
+                               alt="aslwallets fastag"
+                               width={isMobile ? 90 : 140}
+                               height={isMobile ? 60 : 100}
+                             />
+                           </div>
             </DialogTitle>
             <DialogDescription className="text-center text-xs md:text-base">
               Get started with FASTag services

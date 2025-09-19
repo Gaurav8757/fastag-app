@@ -12,7 +12,7 @@ import { FaXTwitter } from "react-icons/fa6";
 export default function Footer() {
   const isMobile = useIsMobile();
   return (
-    <footer className="text-center  flex flex-col justify-between text-xs md:text-sm px-8 pb-6 md:px-12 bg-gradient-to-tr from-zinc-700 to-gray-800 text-gray-300 dark:text-gray-400 backdrop-blur-3xl tracking-wider">
+    <footer className="text-center  flex flex-col justify-between text-xs md:text-sm px-8 pb-6 md:px-12 bg-gradient-to-tr from-zinc-700 to-slate-900 text-gray-300 dark:text-gray-400 backdrop-blur-3xl tracking-wider">
       <div className="w-full py-4 container  mx-auto border-b border-gray-700 mb-4">
         <div className="flex sm:items-center  justify-between">
              <Link href="/" className="flex items-center gap-2 cursor-pointer">

@@ -23,6 +23,8 @@ import { toast } from "sonner";
 import { ArrowBigLeft, ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ForgotPasswordModalProps {
   isOpen: boolean;
@@ -41,6 +43,7 @@ export function ForgotPasswordModal({
   const [password, setPassword] = useState("");
   const [sessionId, setSessionId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const isMobile = useIsMobile();
   const router = useRouter();
   const sendOtp = async () => {
     if (mobileNumber.length !== 10) {
@@ -153,29 +156,38 @@ export function ForgotPasswordModal({
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md text-black bg-gradient-to-bl from-orange-50 to-green-50">
-        <DialogHeader>
-            <div>
+        <div className="flex items-center justify-between">
+          {" "}
           <Button
-            onClick={()=> router.back()}
-            variant={'ghost'}
+            onClick={() => router.back()}
+            variant={"ghost"}
             className=" items-center cursor-pointer text-center justify-start hover:scale-102 duration-300 transition-all"
           >
             <ArrowLeft className="h-5 w-5" />
             <span>Login</span>
-          </Button></div>
-          <DialogTitle className="text-center tracking-wide">
-            Reset Password
-          </DialogTitle>
-          <DialogDescription className="text-center text-sm">
-            {step === "number"
-              ? "Enter your registered number to receive OTP"
-              : step === "otp"
-              ? "Enter the OTP sent to your mobile"
-              : "Set a new password"}
-          </DialogDescription>
-        </DialogHeader>
+          </Button>
+          <Image
+            src="/logo.png"
+            alt="aslwallets fastag"
+            width={isMobile ? 90 : 140}
+            height={isMobile ? 60 : 100}
+          />
+          <Button className="invisible">helloe world</Button>
+        </div>
 
-        <Card className="border-none shadow-none bg-transparent">
+        <Card className="bg-transparent">
+          <DialogHeader>
+            <DialogTitle className="text-center tracking-wide">
+              Reset Password
+            </DialogTitle>
+            <DialogDescription className="text-center text-sm">
+              {step === "number"
+                ? "Enter your registered number to receive OTP"
+                : step === "otp"
+                ? "Enter the OTP sent to your mobile"
+                : "Set a new password"}
+            </DialogDescription>
+          </DialogHeader>
           <CardContent className="space-y-2">
             {step === "number" && (
               <>
