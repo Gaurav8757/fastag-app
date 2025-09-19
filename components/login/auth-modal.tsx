@@ -21,10 +21,8 @@ import {
 import { toast } from "sonner";
 import { ShootingStars } from "../ui/shooting-stars";
 import { KeyRound, Loader2 } from "lucide-react";
-import AosProvider from "../aos/AosProvider";
 import { OTPInput } from "./otp-verify/otp-form";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -167,7 +165,7 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
             </DialogDescription>
           </DialogHeader>
 
-          <Card className="bg-gradient-to-bl from-blue-50 to-orange-50">
+          <Card className="bg-gradient-to-bl from-blue-50 to-[#0033ff0e]">
             <CardHeader className="mb-4">
               <CardTitle className="text-lg text-primary">
                 {isOtpSent ? "Verify OTP" : "Login"}

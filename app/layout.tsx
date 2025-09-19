@@ -23,9 +23,9 @@ export default function RootLayout({
       <body className={`font-sans`}>
         {/* providers re-render karta hai ui */}
         <QueryProvider>
-        <Layout modal = {modal}>{children}</Layout>
-        <Toaster position="top-right" />
-        <Analytics />
+          <Layout modal={modal}>{children}</Layout>
+          <Toaster position="top-right" />
+          <Analytics />
         </QueryProvider>
       </body>
     </html>

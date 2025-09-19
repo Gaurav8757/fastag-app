@@ -41,6 +41,7 @@ export function ForgotPasswordModal({
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
   const [sessionId, setSessionId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const isMobile = useIsMobile();
@@ -55,16 +56,16 @@ export function ForgotPasswordModal({
 
     setIsLoading(true);
     try {
-      const res = await fetch("/api/auth/send-reset-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber: mobileNumber }),
-      });
+      // const res = await fetch("/api/auth/send-reset-otp", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ phoneNumber: mobileNumber }),
+      // });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "OTP sending failed");
+      // const data = await res.json();
+      // if (!res.ok) throw new Error(data?.error || "OTP sending failed");
 
-      setSessionId(data.sessionId); // if you generate session ID server-side
+      // setSessionId(data.sessionId); // if you generate session ID server-side
       setStep("otp");
       toast("OTP sent successfully", {
         className: "bg-green-500 text-white",
@@ -86,14 +87,14 @@ export function ForgotPasswordModal({
 
     setIsLoading(true);
     try {
-      const res = await fetch("/api/auth/verify-reset-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber: mobileNumber, otp, sessionId }),
-      });
+      // const res = await fetch("/api/auth/verify-reset-otp", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ phoneNumber: mobileNumber, otp, sessionId }),
+      // });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "OTP verification failed");
+      // const data = await res.json();
+      // if (!res.ok) throw new Error(data?.error || "OTP verification failed");
 
       setStep("reset");
       toast("OTP verified", { className: "bg-green-500 text-white" });
@@ -114,22 +115,22 @@ export function ForgotPasswordModal({
 
     setIsLoading(true);
     try {
-      const res = await fetch("/api/auth/reset-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phoneNumber: mobileNumber,
-          password,
-          sessionId,
-        }),
-      });
+      // const res = await fetch("/api/auth/reset-password", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     phoneNumber: mobileNumber,
+      //     password,
+      //     sessionId,
+      //   }),
+      // });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Password reset failed");
+      // const data = await res.json();
+      // if (!res.ok) throw new Error(data?.error || "Password reset failed");
 
-      toast("Password reset successful!", {
-        className: "bg-green-500 text-white",
-      });
+      // toast("Password reset successful!", {
+      //   className: "bg-green-500 text-white",
+      // });
       onSent(); // redirect to /login
     } catch (err: any) {
       toast(err.message || "Something went wrong", {
@@ -144,6 +145,7 @@ export function ForgotPasswordModal({
     setMobileNumber("");
     setOtp("");
     setPassword("");
+    setPassword1("");
     setStep("number");
     setSessionId("");
   };
@@ -212,11 +214,11 @@ export function ForgotPasswordModal({
                 <Button
                   disabled={isLoading || mobileNumber.length !== 10}
                   onClick={sendOtp}
-                  className="w-full mt-8"
+                  className="w-full mt-8 cursor-pointer disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      <Loader2 className="h-4 w-4 animate-spin" />
                       Sending OTP...
                     </>
                   ) : (
@@ -227,20 +229,21 @@ export function ForgotPasswordModal({
             )}
 
             {step === "otp" && (
-              <>
-                <Label>Enter OTP</Label>
+              <div className="space-y-12">
                 <OTPInput value={otp} onChange={setOtp} />
                 <div className="flex gap-2 justify-between">
                   <Button
                     variant="outline"
                     onClick={() => setStep("number")}
-                    disabled={isLoading}
+                    className="cursor-pointer disabled:cursor-not-allowed"
+                    disabled={isLoading || otp.length === 4}
                   >
                     Change Number
                   </Button>
                   <Button
                     disabled={isLoading || otp.length !== 4}
                     onClick={verifyOtp}
+                    className="cursor-pointer"
                   >
                     {isLoading ? (
                       <>
@@ -252,33 +255,52 @@ export function ForgotPasswordModal({
                     )}
                   </Button>
                 </div>
-              </>
+              </div>
             )}
 
             {step === "reset" && (
               <>
-                <Label htmlFor="password">New Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="Enter new password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Button
-                  disabled={isLoading || password.length < 6}
-                  onClick={resetPassword}
-                  className="w-full"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                      Resetting...
-                    </>
-                  ) : (
-                    "Reset Password"
-                  )}
-                </Button>
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="password">New Password</Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="Enter new password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="confirmpassword">
+                      Confirm New Password
+                    </Label>
+                    <Input
+                      id="confirmpassword"
+                      type="password"
+                      placeholder="Enter new confirm password"
+                      value={password1}
+                      onChange={(e) => setPassword1(e.target.value)}
+                    />
+                  </div>
+                  <Button
+                    disabled={
+                      isLoading || password.length < 6 || password1.length < 6
+                    }
+                    onClick={resetPassword}
+                    className="w-full cursor-pointer disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Resetting...
+                      </>
+                    ) : (
+                      "Reset Password"
+                    )}
+                  </Button>
+                </div>
               </>
             )}
           </CardContent>
