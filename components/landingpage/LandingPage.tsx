@@ -45,7 +45,7 @@ const router = useRouter();
         <Particles
         className="absolute inset-0 z-10 w-[99%]"
         size={1.5}
-        color="#1dbb0b"
+        color="#0051ba"
       />
         {/* Overlay */}
         <div className="absolute inset-0 z-10"></div>
@@ -54,15 +54,15 @@ const router = useRouter();
         <div className="relative z-20 flex md:flex-row flex-col  container mx-auto items-center justify-between  px-4 h-[90%] py-10">
           {/* Text Content */}
           <div
-            className="max-w-xl md:text-left lg:space-y-10 space-y-6"
+            className="max-w-xl md:text-left  space-y-6"
             data-aos="fade-up"
             data-aos-duration="800"
           >
-            <Badge variant="default" className="w-fit">
+            <Badge variant="secondary" className="w-fit text-slate-800 md:text-sm">
               Trusted by 10M+ Users
             </Badge>
-            <h1 className="text-3xl lg:text-6xl font-bold">
-              <AuroraText> Build Your Future with Us</AuroraText>
+            <h1 className="text-4xl lg:text-6xl font-bold">
+              <AuroraText>Seamless FASTag Service Provider</AuroraText>
             </h1>
             <p className="text-lg md:text-xl lg:mb-8">
               Join the revolution in modern web development. Tailored solutions,
@@ -71,7 +71,7 @@ const router = useRouter();
             <RippleButton
               rippleColor="#39ac37"
               onClick={()=> router.push("/login")}
-              className="bg-green-600 text-white px-8 tracking-wider py-2 rounded-md font-semibold hover:bg-green-700 transition"
+              className="bg-primary text-white px-8 tracking-wider py-2 rounded-md font-semibold hover:bg-[#033577] transition"
             >
               Get Started
             </RippleButton>
@@ -170,7 +170,7 @@ const router = useRouter();
               animation="fadeIn"
               by="line"
               as="p"
-              className="text-3xl lg:text-4xl font-bold text-balance"
+              className="text-3xl lg:text-4xl font-bold text-balance bg-gradient-to-tl from-blue-700 to-blue-900 bg-clip-text text-transparent"
             >
               Why Choose FastPay?
             </TextAnimate>
@@ -218,7 +218,7 @@ const router = useRouter();
               <WobbleCard
                 key={index}
                 className={`text-center hover:shadow-lg  ${
-                  index % 2 === 0 ? "bg-green-100 " : "bg-orange-100"
+                  index % 2 === 0 ? "bg-green-100 " : "bg-secondary/20"
                 }   dark:bg-transparent transition-shadow`}
               >
                 <ShootingStars
@@ -246,7 +246,7 @@ const router = useRouter();
                       <feature.icon
                         className={`h-6 w-6 ${
                           index % 2 === 0
-                            ? "text-primary dark:text-white"
+                            ? "text-green-600 dark:text-white"
                             : "text-orange-600 dark:text-white"
                         }`}
                       />
@@ -273,7 +273,7 @@ const router = useRouter();
               animation="fadeIn"
               by="line"
               as="p"
-              className="text-3xl lg:text-4xl font-bold text-balance"
+              className="text-3xl lg:text-4xl font-bold text-balance bg-gradient-to-tl from-blue-700 to-blue-800 bg-clip-text text-transparent"
             >
               Trusted by Millions
             </TextAnimate>
@@ -320,8 +320,8 @@ const router = useRouter();
               >
                 <MagicCard
                   key={index}
-                  className="py-6 mx-4 md:mx-0 rounded-2xl hover:scale-101 transition-all duration-300"
-                  gradientColor="#d4fbd4"
+                  className="py-6 mx-4 md:mx-0 bg-[#0033ff1e] rounded-2xl hover:scale-101 transition-all duration-300"
+                  gradientColor="#0033ff1e"
                 >
                   <CardHeader>
                     <div className="flex items-center gap-1 mb-2">
@@ -354,7 +354,7 @@ const router = useRouter();
       {/* circle */}
 
       {/* CTA Section */}
-      <section className="py-10 bg-secondary/90 text-primary-foreground">
+      <section className="py-10 bg-primary/90 text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <div className="space-y-6 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-balance">
@@ -366,7 +366,7 @@ const router = useRouter();
             </p>
             <Link
             href="/login"
-              className="p-2 px-4 rounded bg-primary/80 hover:bg-primary"
+              className="p-2 px-4 rounded bg-secondary/80 hover:bg-secondary"
             >
               Get Started
             </Link>

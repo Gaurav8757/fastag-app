@@ -71,8 +71,8 @@ export function Navigation() {
                 <Image
                   src="/logo.png"
                   alt="aslwallets fastag"
-                  width={isMobile ? 90 : 140}
-                  height={isMobile ? 60 : 100}
+                  width={isMobile ? 95 : 140}
+                  height={isMobile ? 65 : 100}
                 />
               </div>
             </Link>
@@ -110,7 +110,7 @@ export function Navigation() {
                 <Image
                   src="/logo.png"
                   alt="aslwallets fastag"
-                  width={isMobile ? 100 : 140}
+                  width={isMobile ? 105 : 140}
                   height={isMobile ? 60 : 100}
                 />
               </div>

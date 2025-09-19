@@ -157,7 +157,7 @@ export function ContactClient() {
                 className="mb-4 lg:mb-0 lg:aspect-square mx-auto"
               >
                 <MagicCard
-                  gradientColor="#d4fbd4"
+                  gradientColor="#0033ff3e"
                   className="p-6 rounded-lg shadow-xl bg-red-600/80"
                 >
                   <CardHeader>

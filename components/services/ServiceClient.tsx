@@ -111,7 +111,7 @@ export function ServiceClient() {
                 maxDelay={400}
               />
               <MagicCard
-                gradientColor="#fff7e5"
+                gradientColor="#0033ff1e"
                 key={index}
                 className="hover:shadow-lg p-4 rounded-2xl hover:scale-102 transition-all duration-400"
               >

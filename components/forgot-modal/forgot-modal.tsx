@@ -155,7 +155,7 @@ export function ForgotPasswordModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md text-black bg-gradient-to-bl from-orange-50 to-green-50">
+      <DialogContent className="sm:max-w-md text-black bg-gradient-to-bl from-orange-50 to-blue-50">
         <div className="flex items-center justify-between">
           {" "}
           <Button
@@ -177,7 +177,7 @@ export function ForgotPasswordModal({
 
         <Card className="bg-transparent">
           <DialogHeader>
-            <DialogTitle className="text-center tracking-wide">
+            <DialogTitle className="text-center tracking-wide text-primary">
               Reset Password
             </DialogTitle>
             <DialogDescription className="text-center text-sm">

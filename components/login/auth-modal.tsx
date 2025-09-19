@@ -166,9 +166,9 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
             </DialogDescription>
           </DialogHeader>
 
-          <Card className="bg-gradient-to-bl from-green-50 to-orange-50">
+          <Card className="bg-gradient-to-bl from-blue-50 to-orange-50">
             <CardHeader className="mb-4">
-              <CardTitle className="text-lg">
+              <CardTitle className="text-lg text-primary">
                 {isOtpSent ? "Verify OTP" : "Login"}
               </CardTitle>
               <CardDescription>

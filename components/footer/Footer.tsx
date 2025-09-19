@@ -20,8 +20,8 @@ export default function Footer() {
                 <Image
                   src="/logo.png"
                   alt="aslwallets fastag"
-                  width={isMobile ? 90 : 140}
-                  height={isMobile ? 60 : 100}
+                  width={isMobile ? 95 : 140}
+                  height={isMobile ? 65 : 100}
                 />
               </div>
             </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
           </Link>
           | All Rights Reserved | Powered by{" "}
           <Link
-            className="hover:scale-105 transition-all duration-300 hover:text-green-500"
+            className="hover:scale-105 transition-all duration-300 hover:text-blue-400"
             href="https://www.aslsolutiontech.com/"
             target="_blank"
           >

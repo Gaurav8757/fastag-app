@@ -121,7 +121,7 @@ export function AboutClient() {
             />
             <MagicCard
               key={idx}
-              gradientColor="#d4fbd4"
+              gradientColor="#0033ff1e"
               className="hover:scale-102 p-4 transition-all duration-300 backdrop-blur-md aspect-rectangle border-0 border-primary-light rounded text-center "
            
             >

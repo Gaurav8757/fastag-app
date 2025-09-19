@@ -52,8 +52,8 @@ export function HelpLine() {
         animation="fadeIn"
         by="line"
         as="p"
-        className="text-3xl  md:text-4xl z-1 font-bold text-center "
-      >
+        className="text-3xl  md:text-4xl z-1 font-bold text-center bg-gradient-to-tl from-blue-700 to-blue-900 bg-clip-text text-transparent"
+      > 
         Bank Helpline Numbers
       </TextAnimate>
       <TextAnimate
