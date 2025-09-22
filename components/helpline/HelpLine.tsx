@@ -68,8 +68,8 @@ const bankData = [
       <div className="container mx-auto relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 rounded-2xl text-xs md:text-sm">
         {bankData.map((bank, index) => (
           <div
-            data-aos="zoom-in-up"
-            data-aos-delay={index * 2}
+            data-aos="fade-up"
+            data-aos-delay={index * 10}
             key={index}
             className=" rounded transition-all duration-400 hover:shadow-smoke-lg relative overflow-hidden"
           >
