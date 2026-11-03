@@ -8,19 +8,12 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { OTPInput } from "@/components/login/otp-verify/otp-form"; // reuse your existing OTP input
+import { OTPInput } from "@/components/login/otp-verify/otp-form";
 import { toast } from "sonner";
-import { ArrowBigLeft, ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Eye, EyeOff, KeyRound, Loader2, Lock, PhoneCall, ShieldCheck, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -43,37 +36,24 @@ export function ForgotPasswordModal({
   const [password, setPassword] = useState("");
   const [password1, setPassword1] = useState("");
   const [sessionId, setSessionId] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const isMobile = useIsMobile();
   const router = useRouter();
+
   const sendOtp = async () => {
     if (mobileNumber.length !== 10) {
-      toast("Please enter a valid 10-digit mobile number", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error("Please enter a valid 10-digit mobile number");
       return;
     }
 
     setIsLoading(true);
     try {
-      // const res = await fetch("/api/auth/send-reset-otp", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ phoneNumber: mobileNumber }),
-      // });
-
-      // const data = await res.json();
-      // if (!res.ok) throw new Error(data?.error || "OTP sending failed");
-
-      // setSessionId(data.sessionId); // if you generate session ID server-side
       setStep("otp");
-      toast("OTP sent successfully", {
-        className: "bg-green-500 text-white",
-      });
+      toast.success("OTP sent successfully to your mobile");
     } catch (err: any) {
-      toast(err.message || "Failed to send OTP", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error(err.message || "Failed to send OTP");
     } finally {
       setIsLoading(false);
     }
@@ -81,72 +61,56 @@ export function ForgotPasswordModal({
 
   const verifyOtp = async () => {
     if (otp.length !== 4) {
-      toast("Please enter valid 4-digit OTP");
+      toast.error("Please enter valid 4-digit OTP");
       return;
     }
 
     setIsLoading(true);
     try {
-      // const res = await fetch("/api/auth/verify-reset-otp", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ phoneNumber: mobileNumber, otp, sessionId }),
-      // });
-
-      // const data = await res.json();
-      // if (!res.ok) throw new Error(data?.error || "OTP verification failed");
-
       setStep("reset");
-      toast("OTP verified", { className: "bg-green-500 text-white" });
+      toast.success("OTP verified successfully");
     } catch (err: any) {
-      toast(err.message || "OTP verification failed", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error(err.message || "Invalid OTP");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const resetPassword = async () => {
+  const handleResetPassword = async () => {
+    if (!password || !password1) {
+      toast.error("Please fill in both password fields");
+      return;
+    }
+
     if (password.length < 6) {
-      toast("Password must be at least 6 characters");
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+
+    if (password !== password1) {
+      toast.error("Passwords do not match");
       return;
     }
 
     setIsLoading(true);
     try {
-      // const res = await fetch("/api/auth/reset-password", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({
-      //     phoneNumber: mobileNumber,
-      //     password,
-      //     sessionId,
-      //   }),
-      // });
-
-      // const data = await res.json();
-      // if (!res.ok) throw new Error(data?.error || "Password reset failed");
-
-      // toast("Password reset successful!", {
-      //   className: "bg-green-500 text-white",
-      // });
-      onSent(); // redirect to /login
+      toast.success("Password updated successfully!");
+      handleClose();
+      onSent();
+      router.push("/login");
     } catch (err: any) {
-      toast(err.message || "Something went wrong", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error(err.message || "Failed to reset password");
     } finally {
       setIsLoading(false);
     }
   };
 
   const resetAll = () => {
+    setStep("number");
     setMobileNumber("");
     setOtp("");
     setPassword("");
     setPassword1("");
-    setStep("number");
     setSessionId("");
   };
 
@@ -157,154 +121,209 @@ export function ForgotPasswordModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md text-black bg-gradient-to-bl from-blue-50 to-[#0033ff0e]">
-        <div className="flex items-center justify-between">
-          {" "}
-          <Button
-            onClick={() => router.back()}
-            variant={"ghost"}
-            className=" items-center cursor-pointer text-center justify-start hover:scale-102 duration-300 transition-all"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            <span>Login</span>
-          </Button>
-          <Image
-            src="/logo.png"
-            alt="aslwallets fastag"
-            width={isMobile ? 90 : 140}
-            height={isMobile ? 60 : 100}
-          />
-          <Button className="invisible">helloe world</Button>
-        </div>
+      <DialogContent className="sm:max-w-md border-border/40 bg-background/95 backdrop-blur-xl shadow-2xl p-0 overflow-hidden rounded-2xl">
+        <div className="h-1.5 w-full bg-gradient-to-r from-primary via-blue-500 to-amber-500" />
 
-        <Card className="bg-transparent">
-          <DialogHeader>
-            <DialogTitle className="text-center tracking-wide text-primary">
-              Reset Password
+        <div className="p-6 md:p-8">
+          <div className="flex items-center justify-between pb-4">
+            <Button
+              onClick={() => router.back()}
+              variant="ghost"
+              size="sm"
+              className="text-xs text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span>Back</span>
+            </Button>
+            <div className="p-1 rounded-xl bg-muted/40 border border-border/50">
+              <Image
+                src="/logo.png"
+                alt="FASTag"
+                width={isMobile ? 80 : 100}
+                height={isMobile ? 32 : 40}
+                className="object-contain"
+              />
+            </div>
+          </div>
+
+          <DialogHeader className="space-y-1.5 text-center">
+            <DialogTitle className="text-xl md:text-2xl font-bold tracking-tight text-foreground">
+              {step === "number" && "Reset Password"}
+              {step === "otp" && "Verify Identity"}
+              {step === "reset" && "Create New Password"}
             </DialogTitle>
-            <DialogDescription className="text-center text-sm">
-              {step === "number"
-                ? "Enter your registered number to receive OTP"
-                : step === "otp"
-                ? "Enter the OTP sent to your mobile"
-                : "Set a new password"}
+            <DialogDescription className="text-xs md:text-sm text-muted-foreground">
+              {step === "number" && "Enter your registered number to receive a verification code"}
+              {step === "otp" && `Enter the 4-digit code sent to +91 ${mobileNumber.slice(0, 2)}******${mobileNumber.slice(-2)}`}
+              {step === "reset" && "Choose a strong password with at least 6 characters"}
             </DialogDescription>
           </DialogHeader>
-          <CardContent className="space-y-2">
+
+          <div className="mt-6">
             {step === "number" && (
-              <>
-                <Label htmlFor="mobile">Mobile Number</Label>
-                <div className="flex">
-                  <div className="flex items-center px-3 border border-r-0 border-input rounded-l-md bg-muted">
-                    +91
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="mobile" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Mobile Number
+                  </Label>
+                  <div className="flex rounded-xl border-2 border-border/70 focus-within:border-primary focus-within:ring-4 focus-within:ring-primary/10 transition-all bg-background/80 overflow-hidden shadow-xs">
+                    <div className="flex items-center gap-1.5 px-3.5 bg-muted/60 border-r border-border/60 text-sm font-semibold text-foreground/80 select-none">
+                      <PhoneCall className="w-3.5 h-3.5 text-primary" />
+                      <span>+91</span>
+                    </div>
+                    <Input
+                      id="mobile"
+                      type="tel"
+                      placeholder="10-digit number"
+                      value={mobileNumber}
+                      onChange={(e) =>
+                        setMobileNumber(
+                          e.target.value.replace(/\D/g, "").slice(0, 10)
+                        )
+                      }
+                      className="border-0 shadow-none focus-visible:ring-0 rounded-none h-11 text-base font-medium tracking-wider"
+                      maxLength={10}
+                    />
                   </div>
-                  <Input
-                    id="mobile"
-                    type="tel"
-                    placeholder="10-digit number"
-                    value={mobileNumber}
-                    onChange={(e) =>
-                      setMobileNumber(
-                        e.target.value.replace(/\D/g, "").slice(0, 10)
-                      )
-                    }
-                    className="rounded-l-none"
-                  />
                 </div>
+
                 <Button
                   disabled={isLoading || mobileNumber.length !== 10}
                   onClick={sendOtp}
-                  className="w-full mt-8 cursor-pointer disabled:cursor-not-allowed"
+                  className="w-full text-base font-semibold"
+                  size="lg"
                 >
                   {isLoading ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Sending OTP...
+                      <span>Sending OTP...</span>
                     </>
                   ) : (
-                    "Send OTP"
+                    <>
+                      <span>Send Verification Code</span>
+                      <Sparkles className="w-4 h-4 ml-1 opacity-80" />
+                    </>
                   )}
                 </Button>
-              </>
+              </div>
             )}
 
             {step === "otp" && (
-              <div className="space-y-12">
-                <OTPInput value={otp} onChange={setOtp} />
-                <div className="flex gap-2 justify-between">
+              <div className="space-y-6">
+                <div className="py-2">
+                  <OTPInput value={otp} onChange={setOtp} />
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
                   <Button
                     variant="outline"
                     onClick={() => setStep("number")}
-                    className="cursor-pointer disabled:cursor-not-allowed"
+                    className="w-full sm:w-1/2"
                     disabled={isLoading || otp.length === 4}
                   >
-                    Change Number
+                    <ArrowLeft className="w-4 h-4 mr-1" />
+                    Edit Number
                   </Button>
                   <Button
                     disabled={isLoading || otp.length !== 4}
                     onClick={verifyOtp}
-                    className="cursor-pointer"
+                    className="w-full sm:w-1/2"
                   >
                     {isLoading ? (
                       <>
-                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                        Verifying...
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        <span>Verifying...</span>
                       </>
                     ) : (
-                      "Verify OTP"
+                      "Confirm & Continue"
                     )}
+                  </Button>
+                </div>
+
+                <div className="text-center pt-1">
+                  <Button
+                    variant="link"
+                    size="sm"
+                    onClick={sendOtp}
+                    disabled={isLoading}
+                    className="text-xs font-semibold text-primary"
+                  >
+                    Resend Code
                   </Button>
                 </div>
               </div>
             )}
 
             {step === "reset" && (
-              <>
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="password">New Password</Label>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="new-pass" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    New Password
+                  </Label>
+                  <div className="relative">
                     <Input
-                      id="password"
-                      type="password"
-                      placeholder="Enter new password"
+                      id="new-pass"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="At least 6 characters"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      className="pr-10 h-11 rounded-xl border-2"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    >
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
                   </div>
+                </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="confirmpassword">
-                      Confirm New Password
-                    </Label>
+                <div className="space-y-2">
+                  <Label htmlFor="confirm-pass" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Confirm Password
+                  </Label>
+                  <div className="relative">
                     <Input
-                      id="confirmpassword"
-                      type="password"
-                      placeholder="Enter new confirm password"
+                      id="confirm-pass"
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder="Re-enter password"
                       value={password1}
                       onChange={(e) => setPassword1(e.target.value)}
+                      className="pr-10 h-11 rounded-xl border-2"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    >
+                      {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
                   </div>
-                  <Button
-                    disabled={
-                      isLoading || password.length < 6 || password1.length < 6
-                    }
-                    onClick={resetPassword}
-                    className="w-full cursor-pointer disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Resetting...
-                      </>
-                    ) : (
-                      "Reset Password"
-                    )}
-                  </Button>
                 </div>
-              </>
+
+                <Button
+                  onClick={handleResetPassword}
+                  disabled={isLoading || !password || !password1}
+                  className="w-full mt-2"
+                  size="lg"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Updating Password...</span>
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>Reset Password</span>
+                    </>
+                  )}
+                </Button>
+              </div>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );

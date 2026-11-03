@@ -11,16 +11,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { toast } from "sonner";
 import { ShootingStars } from "../ui/shooting-stars";
-import { KeyRound, Loader2 } from "lucide-react";
+import {
+  KeyRound,
+  Loader2,
+  ArrowLeft,
+  ShieldCheck,
+  PhoneCall,
+} from "lucide-react";
 import { OTPInput } from "./otp-verify/otp-form";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,46 +32,27 @@ interface AuthModalProps {
 }
 
 export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
-  const [sessionId, setSessionId] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isResendLoading, setResendIsLoading] = useState(false);
   const isMobile = useIsMobile();
-  // const { login } = useStore();
 
   const handleSendOtp = async () => {
     if (mobileNumber.length !== 10) {
-      toast("Please enter a valid 10-digit mobile number", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error("Please enter a valid 10-digit mobile number");
       return;
     }
 
     setResendIsLoading(true);
     try {
-      // const response = await fetch("/api/auth/send-otp", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ phoneNumber: mobileNumber }),
-      // });
-
-      // const data = await response.json();
-
-      // if (!response.ok) {
-      //   throw new Error(data.error || "Failed to send OTP");
-      // }
-
-      // setSessionId(data.sessionId);
       setIsOtpSent(true);
-      toast("OTP sent to your mobile number!", {
-        className: "bg-green-500 text-white",
-      });
+      toast.success("OTP sent to your mobile number!");
     } catch (error) {
-      toast(error instanceof Error ? error.message : "Failed to send OTP", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error(
+        error instanceof Error ? error.message : "Failed to send OTP",
+      );
     } finally {
       setResendIsLoading(false);
     }
@@ -80,42 +60,21 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
 
   const handleVerifyOtp = async () => {
     if (otp.length !== 4) {
-      toast("Please enter a valid 4-digit OTP");
+      toast.error("Please enter a valid 4-digit OTP");
       return;
     }
 
     setIsLoading(true);
     try {
-      // const response = await fetch("/api/auth/verify-otp", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({
-      //     phoneNumber: mobileNumber,
-      //     otp: otp,
-      //     sessionId: sessionId,
-      //   }),
-      // });
-
-      // const data = await response.json();
-
-      // if (!response.ok) {
-      //   throw new Error(data.error || "Failed to verify OTP");
-      // }
-
-      toast("Login successful!", {
-        className: "bg-green-500 text-white",
-      });
-
-      // Reset form and close modal
+      toast.success("Login successful! Welcome back.");
       setMobileNumber("");
       setOtp("");
       setIsOtpSent(false);
-      setSessionId("");
-      onLogin(); // This will redirect to dashboard
+      onLogin();
     } catch (error) {
-      toast(error instanceof Error ? error.message : "Failed to verify OTP", {
-        className: "bg-red-500 text-white",
-      });
+      toast.error(
+        error instanceof Error ? error.message : "Failed to verify OTP",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -128,161 +87,160 @@ export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
 
   const handleClose = () => {
     onClose();
-    // Reset form
     setMobileNumber("");
     setOtp("");
     setIsOtpSent(false);
   };
 
+  const renderPrevious = () => {
+    
+    return (
+      <div>
+       {isOtpSent && (
+            <div className="inline-flex">
+                <ArrowLeft className="w-6 h-6" onClick={handleChangeOtpToMobile} />
+            </div>
+          )}
+          </div>
+    )
+  }
   return (
-    // <AosProvider>
     <div className="relative">
       <ShootingStars
         className="absolute inset-0 z-10 pointer-events-none"
         starColor="#ea871f"
-        trailColor="#39ac37"
+        trailColor="#0051ba"
         minSpeed={5}
         maxSpeed={10}
         minDelay={200}
         maxDelay={300}
       />
       <Dialog open={isOpen} onOpenChange={handleClose}>
-   
-        <DialogContent className="sm:max-w-md text-center text-black bg-gradient-to-bl from-blue-50 to-[#0033ff0e]">
-          <DialogHeader>
-            <DialogTitle className="text-center tracking-widest">
-              <div className="flex items-center justify-center">
-                <Image
-                  src="/logo.png"
-                  alt="aslwallets fastag"
-                  width={isMobile ? 90 : 140}
-                  height={isMobile ? 60 : 100}
-                />
-              </div>
-            </DialogTitle>
-            <DialogDescription className="text-center text-xs md:text-base">
-              Get started with FASTag services
-            </DialogDescription>
-          </DialogHeader>
+        <DialogContent className="sm:max-w-[400px] border-border/50 bg-background/95 backdrop-blur-3xl shadow-2xl p-0 overflow-hidden rounded-2xl">
+          <div className="px-5 py-5 sm:p-6">
+        {renderPrevious()}
 
-          <Card className="bg-gradient-to-bl from-blue-50 to-[#0033ff0e]">
-            <CardHeader className="mb-4">
-              <CardTitle className="text-lg text-primary">
-                {isOtpSent ? "Verify OTP" : "Login"}
-              </CardTitle>
-              <CardDescription>
+            <DialogHeader className="space-y-1.5 text-center">
+              <div className="flex items-center justify-center pb-1">
+                <div className="p-1.5 rounded-xl bg-muted/40  ">
+                  <Image
+                    src="/logo.png"
+                    alt="FASTag"
+                    width={isMobile ? 85 : 105}
+                    height={isMobile ? 32 : 40}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <DialogTitle className="text-lg md:text-xl font-bold text-center tracking-tight text-foreground">
+                {isOtpSent ? "Enter Verification Code" : ""}
+              </DialogTitle>
+              <DialogDescription className="text-xs text-muted-foreground text-center line-clamp-2">
                 {isOtpSent
-                  ? `Enter the OTP sent your mobile number +91 ${"*".repeat(
-                      mobileNumber.length - 4
-                    )} ${mobileNumber.slice(-2)}`
-                  : "We'll send you an OTP to verify your number"}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="md:space-y-10 space-y-8">
+                  ? `Sent to mobile number: ${mobileNumber.slice(0, 2)}******${mobileNumber.slice(-2)}`
+                  : ""}
+              </DialogDescription>
+            </DialogHeader>
+
+            <div>
               {!isOtpSent ? (
-                <>
-                  <div className="space-y-2 tracking-wide">
-                    <Label htmlFor="mobile">Mobile Number</Label>
-                    <div className="flex">
-                      <div className="flex items-center px-3 border border-r-0 border-input rounded-l-md bg-muted">
-                        <span className="text-sm text-muted-foreground">
-                          +91
-                        </span>
+                <div className="space-y-3.5">
+                  <div className="space-y-1.5">
+                    <Label
+                      htmlFor="mobile"
+                      className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground"
+                    >
+                      Mobile Number
+                    </Label>
+                    <div className="flex rounded-xl border border-border/80 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15 transition-all bg-background overflow-hidden shadow-2xs">
+                      <div className="flex items-center gap-1 px-3 bg-muted/50 border-r border-border/60 text-xs font-semibold text-foreground/80 select-none">
+                        <PhoneCall className="w-3 h-3 text-primary" />
+                        <span>+91</span>
                       </div>
                       <Input
                         id="mobile"
                         type="tel"
-                        placeholder="Enter 10-digit mobile number"
+                        placeholder="10-digit mobile number"
                         value={mobileNumber}
                         onChange={(e) =>
                           setMobileNumber(
-                            e.target.value.replace(/\D/g, "").slice(0, 10)
+                            e.target.value.replace(/\D/g, "").slice(0, 10),
                           )
                         }
-                        className="rounded-l-none"
+                        className="border-0 shadow-none focus-visible:ring-0 rounded-none h-10 text-sm font-medium tracking-wider"
                         maxLength={10}
                       />
                     </div>
-                    <div className="text-end text-xs md:text-sm relative">
-                      <p className="text-gray-500 mb-1 flex items-center justify-end gap-1">
-                        <KeyRound className="w-4 h-4 text-blue-700" />
-                        Forgot your password?
-                        <Link
-                          href="/forgot"
-                          className="text-blue-600 hover:text-blue-700 font-medium transition duration-200 hover:underline"
-                        >
-                          Reset it here
-                        </Link>
-                      </p>
+
+                    <div className="flex items-center justify-between pt-0.5">
+                      <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                        <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                        <span>Instant & Safe</span>
+                      </div>
+                      <Link
+                        href="/forgot"
+                        className="inline-flex items-center gap-1 text-[11px] text-primary font-medium hover:underline transition-colors"
+                      >
+                        <KeyRound className="w-3 h-3" />
+                        Forgot password?
+                      </Link>
                     </div>
                   </div>
+
                   <Button
                     onClick={handleSendOtp}
                     disabled={isLoading || mobileNumber.length !== 10}
-                    className={`
-    w-full mt-2
-    disabled:bg-gray-300
-    disabled:text-gray-800
-    disabled:cursor-not-allowed
-    cursor-pointer
-    flex items-center justify-center
-  `}
+                    className="w-full h-10 text-sm font-semibold mt-1"
+                    size="default"
                   >
                     {isLoading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        Sending OTP...
-                      </>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
                     ) : (
-                      "Send OTP"
+                      <span>Get OTP</span>
                     )}
                   </Button>
-                </>
+                </div>
               ) : (
-                <>
-                  <div className="space-y-4">
-                    {/* <Label htmlFor="otp">Enter OTP</Label> */}
+                <div className="space-y-4">
+                  <div className="py-1">
                     <OTPInput value={otp} onChange={setOtp} />
                   </div>
-                  <div className="flex justify-evenly gap-2">
-                    <Button
-                      variant="outline"
-                      onClick={handleChangeOtpToMobile}
-                      className={`flex cursor-pointer disabled:cursor-not-allowed`}
-                      disabled={otp.length === 4}
-                    >
-                      Change Number
-                    </Button>
-                    <Button
-                      onClick={handleVerifyOtp}
-                      className={`flex disabled:cursor-not-allowed cursor-pointer`}
-                      disabled={isLoading || otp.length !== 4}
-                    >
-                      {isLoading ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          Verifying...
-                        </>
-                      ) : (
-                        "Verify & Login"
-                      )}
-                    </Button>
-                  </div>
-                  <div className="text-center">
+
+                  <Button
+                    onClick={handleVerifyOtp}
+                    className="w-full h-9 text-xs"
+                    disabled={isLoading || otp.length !== 4}
+                    size="sm"
+                  >
+                    {isLoading ? (
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                    ) : (
+                      "Login"
+                    )}
+                  </Button>
+
+                  <div className="text-center pt-0.5">
+                    <span className="text-[11px] text-muted-foreground mr-1">
+                      Didn't get code?
+                    </span>
                     <Button
                       variant="link"
-                      className="disabled:cursor-not-allowed cursor-pointer"
                       size="sm"
                       onClick={handleSendOtp}
                       disabled={isResendLoading}
+                      className="text-[11px] font-semibold text-primary p-0 h-auto"
                     >
-                      Resend OTP
+                      {isResendLoading ? (
+                        <Loader2 className="w-3 h-3 animate-spin" />
+                      ) : (
+                        "Resend OTP"
+                      )}
                     </Button>
                   </div>
-                </>
+                </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </DialogContent>
       </Dialog>
     </div>

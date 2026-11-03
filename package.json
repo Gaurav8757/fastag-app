@@ -1,5 +1,5 @@
 {
-  "name": "my-v0-project",
+  "name": "asl-fastag",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -87,5 +87,10 @@
   "overrides": {
     "@types/react": "19.1.12",
     "@types/react-dom": "19.1.9"
+  },
+  "allowScripts": {
+    "@tailwindcss/oxide@4.1.13": true,
+    "esbuild@0.25.9": true,
+    "sharp@0.34.5": true
   }
 }
