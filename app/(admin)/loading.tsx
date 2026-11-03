@@ -1,4 +1,5 @@
-import { LoaderOne } from "@/components/ui/loader";
-export default function Loader() {
-  return <LoaderOne />;
+import { LoginTransitionLoader } from "@/components/ui/login-transition-loader";
+
+export default function AdminLoading() {
+  return <LoginTransitionLoader />;
 }

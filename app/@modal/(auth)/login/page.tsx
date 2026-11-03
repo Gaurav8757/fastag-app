@@ -1,37 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AuthModal } from "@/components/login/auth-modal";
-import { LoginTransitionLoader } from "@/components/ui/login-transition-loader";
 
 export default function LoginModalIntercept() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
-  const [isNavigating, setIsNavigating] = useState(false);
 
-  // Prefetch dashboard route in advance so navigation is instantaneous
+  // Prefetch dashboard so route chunks are ready
   useEffect(() => {
     router.prefetch("/homepage");
   }, [router]);
 
   const handleClose = () => {
-    if (isNavigating) return;
     setIsOpen(false);
     setTimeout(() => router.back(), 150);
   };
 
   const handleLogin = () => {
     setIsOpen(false);
-    setIsNavigating(true);
-    // Instant navigation without artificial delay
+    // Directly navigate to dashboard; Next.js route transition
+    // will show the full-screen centered dual opposing loader in app/(admin)/loading.tsx
     router.push("/homepage");
   };
 
   return (
-    <>
-      <AuthModal isOpen={isOpen} onClose={handleClose} onLogin={handleLogin} />
-      {isNavigating && <LoginTransitionLoader />}
-    </>
+    <AuthModal isOpen={isOpen} onClose={handleClose} onLogin={handleLogin} />
   );
 }
